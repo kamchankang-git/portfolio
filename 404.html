@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Chan Kang</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111214;--muted:#6E7076;--ac:#2443B8;--rule:#E6E7EA}
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:var(--ink);font-family:'Instrument Sans','IBM Plex Sans KR',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body[data-lang="ko"]{font-family:'Instrument Sans','IBM Plex Sans KR',sans-serif}
+[data-l]{display:none}body[data-lang="ko"] [data-l="ko"],body[data-lang="en"] [data-l="en"]{display:revert}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;font-size:15px}
+nav a{color:inherit;text-decoration:none}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 48px 12vh;max-width:760px}
+.code{font-size:14px;font-weight:600;color:var(--ac);letter-spacing:.04em}
+h1{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.05;margin-top:12px}
+p{font-size:17px;color:var(--muted);line-height:1.6;margin-top:16px}
+.go{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
+.go a{display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color .2s,color .2s}
+.go a.p{background:var(--ink);color:#fff}
+.go a:hover{background:var(--ink);color:#fff}
+.go a:active{transform:scale(.97)}
+:is(a,button):focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media (max-width:760px){nav{padding:14px 16px;font-size:14px}main{padding:0 16px 10vh}p{font-size:15px}.go a{flex:1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.go a{transition:none}}
+</style></head>
+<body data-lang="ko">
+<nav><a href="/portfolio/"><span data-l="ko">강감찬</span><span data-l="en">Chan Kang</span></a></nav>
+<main>
+ <div class="code">404</div>
+ <h1 data-l="ko">페이지를 찾을 수 없어요</h1>
+ <h1 data-l="en">Page not found</h1>
+ <p data-l="ko">주소가 바뀌었거나 없는 페이지예요. 아래에서 다시 시작해 주세요.</p>
+ <p data-l="en">This page may have moved, or it never existed. Try one of these instead.</p>
+ <div class="go">
+  <a class="p" href="/portfolio/"><span data-l="ko">홈으로</span><span data-l="en">Home</span></a>
+  <a href="/portfolio/work.html">Projects</a>
+ </div>
+</main>
+<script>
+(function(){var l=null;try{l=localStorage.getItem('lang')}catch(e){}
+if(l!=='ko'&&l!=='en')l=(navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en';
+document.body.dataset.lang=l;document.documentElement.lang=l;if(l==='en')document.title='404 · Chan Kang';else document.title='404 · 강감찬'})();
+</script>
+</body></html>

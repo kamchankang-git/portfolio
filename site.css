@@ -38,3 +38,8 @@ nav .lang button:last-of-type{font-size:13px!important}
  nav .lang button{height:26px!important}
  nav .lang button:last-of-type{font-size:12px!important}
 }
+
+/* Keyboard focus: visible ring for links, buttons and fields (keyboard only, not mouse clicks) */
+html body :is(a,button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #2443B8!important;outline-offset:2px!important;border-radius:6px}
+html body .lang button:focus-visible{outline-offset:-2px!important;border-radius:999px}
+html body .cvbox input:focus-visible{outline-offset:0!important;border-radius:10px}

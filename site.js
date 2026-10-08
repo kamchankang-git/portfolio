@@ -33,3 +33,6 @@ window.openCV=openCV;
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.rbtn');if(!a)return;e.preventDefault();e.stopPropagation();openCV()},true);
 if(new URLSearchParams(location.search).get('cv')==='1'){if(document.readyState==='complete')openCV();else addEventListener('load',openCV)}
 })();
+
+// Favicon on every page, including unlocked case pages
+(function(){if(document.querySelector('link[rel~="icon"]'))return;var l=document.createElement('link');l.rel='icon';l.type='image/svg+xml';l.href='favicon.svg';document.head.appendChild(l)})();
