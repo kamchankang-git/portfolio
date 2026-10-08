@@ -430,13 +430,13 @@ const rail=[...document.querySelectorAll('.rail button')],rfill=document.getElem
 function segTop(i){const total=stage.offsetHeight-innerHeight,p=i<0?0:.1+.9*((i+.5)/5);return stage.offsetTop+p*total}
 rail.forEach(b=>b.onclick=()=>go(+b.dataset.i));
 let snapT=null,lastIdx=-1;
-let lock=0,acc=0,goal=null,lastWheel=0,used=false;
+let lock=0,acc=0,goal=null,lastWheel=0,used=false,lastDir=0;
 function inStage(){const r=stage.getBoundingClientRect();return r.top<=1&&r.bottom>=innerHeight-1}
 function go(i){i=Math.max(-1,Math.min(4,i));goal=i;lock=performance.now()+750;scrollTo({top:segTop(i),behavior:'smooth'})}
 // wheel/trackpad: one gesture = one company
 addEventListener('wheel',e=>{if(!inStage())return;const cur=goal??lastIdx;
  if((cur===4&&e.deltaY>0)||(cur===-1&&e.deltaY<0&&stage.getBoundingClientRect().top>=-2))return;
- e.preventDefault();const now=performance.now();if(now-lastWheel>220){used=false;acc=0}lastWheel=now;
+ e.preventDefault();const now=performance.now();const dir=Math.sign(e.deltaY);if(now-lastWheel>220||(dir&&dir!==lastDir)){used=false;acc=0}if(dir)lastDir=dir;lastWheel=now;
  if(used||now<lock){acc=0;return}acc+=e.deltaY;if(Math.abs(acc)>30){go(cur+(acc>0?1:-1));acc=0;used=true}},{passive:false});
 // touch: one swipe = one company (momentum can't carry past the next one)
 let ty0=null,tFrom=-1;
