@@ -418,7 +418,7 @@ const LAY={};
 const mtap=(()=>{const e=document.createElement('div');e.className='mtap';e.setAttribute('aria-hidden','true');document.querySelector('.sticky').appendChild(e);return e})();
 function applyLay(k){const L=LAY[k];if(!L||!mqM.matches)return;RL=L.RL;wrap.style.transform=`scale(${L.s.toFixed(3)})`;
  const rl=document.querySelector('.rail');if(rl)rl.style.top=((L.bt+L.bb)/2)+'px';
- mtap.textContent=lang==='ko'?'탭하면 뒤집혀요':'Tap to flip';mtap.style.top=(L.bb+8)+'px';mtap.style.opacity=k==='id'?1:0}
+ mtap.textContent=lang==='ko'?'탭하면 뒤집혀요':'Tap to flip';mtap.style.top=(L.bb+8)+'px';mtap.style.opacity=(k==='id'&&!mtap.dataset.done)?1:0}
 fitRig();addEventListener('resize',fitRig);
 function swapTo(k){if(k===cur&&!pending)return;if(reduce){cur=k;badge.classList.remove('flipped');render(k);return}pending=k;liftT=1}
 let lastT=performance.now();
@@ -447,7 +447,7 @@ badge.addEventListener('animationend',()=>badge.classList.remove('shine'));
 badge.addEventListener('pointerdown',e=>{drag=true;moved=0;lastX=e.clientX;lastY=e.clientY;badge.setPointerCapture(e.pointerId)});
 badge.addEventListener('pointermove',e=>{if(!drag)return;const d=(e.clientX-lastX)/TUNE.dragSens;moved+=Math.abs(e.clientX-lastX)+Math.abs(e.clientY-lastY);lastY=e.clientY;ang=Math.max(-.6,Math.min(.6,ang+d));vel=d*.5;lastX=e.clientX});
 const endDrag=()=>{drag=false};badge.addEventListener('pointercancel',endDrag);badge.addEventListener('lostpointercapture',endDrag);
-badge.addEventListener('pointerup',()=>{if(!drag)return;drag=false;if(moved<6){badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
+badge.addEventListener('pointerup',()=>{if(!drag)return;drag=false;if(moved<6){mtap.dataset.done=1;mtap.style.opacity=0;badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
 // scroll → career
 const stage=document.getElementById('stage'),strip=document.getElementById('strip'),bar=document.getElementById('bar'),ticks=[...document.querySelectorAll('.tick')];
 const rail=[...document.querySelectorAll('.rail button')],rfill=document.getElementById('rfill');
