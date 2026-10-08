@@ -183,8 +183,11 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .cvbox .tabs button{flex:1;all:unset;flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer}
 .cvbox .tabs button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .cvbox .pane{display:grid;gap:8px;margin-top:14px}.cvbox .pane[hidden]{display:none}
-.cvbox input{font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--rule);border-radius:10px}
+.cvbox input{min-width:0;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--rule);border-radius:10px}
 .cvbox .go2{font:inherit;font-size:15px;font-weight:600;padding:13px;border-radius:10px;border:0;background:var(--ink);color:#fff;cursor:pointer;margin-top:4px}
+.cvbox .go2:disabled{opacity:.6;cursor:default}
+.cvbox .cvmsg{font-size:13.5px;color:var(--muted);margin-top:2px}.cvbox .cvmsg:empty{display:none}.cvbox .cvmsg a,.cvbox .cvdone a{color:var(--ac)}
+.cvbox .cvdone{font-size:15px;line-height:1.55;padding:6px 0}
 .modes{font-size:13px;color:var(--muted);margin:-6px 0 14px}
 .lk{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-top:22px}
 .lk+.pts{margin-top:10px}
@@ -352,7 +355,12 @@ const TYPE={ko:['회사 이름을 적어 보세요','어느 회사에서 오셨�
  tick()})();
 function openCV(){const ko=lang==='ko';const m=document.getElementById('cvModal');m.innerHTML=`<div class="cvbox" role="dialog" aria-modal="true"><button class="x" aria-label="close">×</button><h3>${ko?'이력서 받기':'Get my resume'}</h3><p class="d">${ko?'이력서는 요청해 주신 분께 직접 보내드려요.':'I send my resume directly to people who ask.'}</p><div class="pane" data-p="req"><input id="rqName" placeholder="${ko?'이름':'Name'}"><input id="rqCo" placeholder="${ko?'회사':'Company'}" value="${COMPANY.replace(/"/g,'&quot;')}"><input id="rqCt" placeholder="${ko?'이메일 또는 연락처':'Email or phone'}"><button class="go2" id="rqSend">${ko?'요청 보내기':'Send request'}</button></div></div>`;
  m.hidden=false;const close=()=>m.hidden=true;m.querySelector('.x').onclick=close;m.onclick=e=>{if(e.target===m)close()};
- m.querySelector('#rqSend').onclick=()=>{const v=id=>m.querySelector(id).value.trim();location.href='mailto:kamchan.kang@gmail.com?subject='+encodeURIComponent((ko?'이력서 요청: ':'Resume request: ')+(v('#rqCo')||''))+'&body='+encodeURIComponent((ko?'이름: ':'Name: ')+v('#rqName')+'\n'+(ko?'회사: ':'Company: ')+v('#rqCo')+'\n'+(ko?'연락처: ':'Contact: ')+v('#rqCt')+'\n')};}
+ const FORM='https://formspree.io/f/mvkzkjyo';const btn=m.querySelector('#rqSend');const pane=m.querySelector('.pane');const msg=t=>{let e=m.querySelector('.cvmsg');if(!e){e=document.createElement('p');e.className='cvmsg';e.setAttribute('role','status');pane.appendChild(e)}e.innerHTML=t};
+ btn.onclick=async()=>{const v=id=>m.querySelector(id).value.trim();const ct=v('#rqCt');if(!ct){msg(ko?'답장 받을 이메일이나 연락처를 적어 주세요.':'Please add an email or phone so I can reach you.');m.querySelector('#rqCt').focus();return}
+  btn.disabled=true;btn.textContent=ko?'보내는 중…':'Sending…';msg('');
+  try{const r=await fetch(FORM,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:v('#rqName'),company:v('#rqCo'),contact:ct,_subject:(ko?'이력서 요청: ':'Resume request: ')+(v('#rqCo')||'-')})});if(!r.ok)throw 0;
+   pane.innerHTML=`<p class="cvdone">${ko?'요청을 보냈어요. 확인하는 대로 이력서를 보내드릴게요.':"Request sent. I'll email my resume shortly."}</p>`}
+  catch(e){btn.disabled=false;btn.textContent=ko?'요청 보내기':'Send request';const a='<a href="mailto:kamchan.kang@gmail.com">kamchan.kang@gmail.com</a>';msg(ko?`전송에 실패했어요. ${a}으로 직접 메일 주세요.`:`Couldn't send that. Please email me directly at ${a}.`)}};}
 
 function NEXTBACK(){const ko=lang==='ko';return `<div class="tease"><div class="t1">${ko?'뒤집어 보셨네요 👀':'You flipped it 👀'}</div><p>${ko?'이런 호기심이 있는 팀이라면, 만드는 제품도 궁금해지네요.':'Curiosity like this usually leads to something worth hearing about.'}</p><p class="t2">${ko?'서로 궁금한 것, 커피 한 잔 하며 나눠 볼까요?':'Let’s trade questions over coffee.'}</p><div class="qrrow"><div class="qrbox" id="qrNext"></div><a class="say" href="https://www.linkedin.com/in/chan-kang" target="_blank" rel="noopener">${ko?'LinkedIn으로 인사 나누기':'Say hi on LinkedIn'} <b>→</b></a></div></div>`}
 function drawQR(){const el=document.getElementById('qrNext');if(!el||el.dataset.done||!window.QRCode)return;el.dataset.done=1;new QRCode(el,{text:'https://www.linkedin.com/in/chan-kang',width:76,height:76,colorDark:'#1a1f3d',colorLight:'rgba(255,255,255,0)',correctLevel:QRCode.CorrectLevel.M})}
