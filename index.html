@@ -249,7 +249,7 @@ nav .brand{color:inherit;text-decoration:none}
 }
 .axes .al{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
 .badge{touch-action:pan-y}
-@media (max-width:760px){.face.nextc,.nextc .main:before,.nextc .seal{-webkit-backface-visibility:hidden;backface-visibility:hidden}.face.nextc{transition:visibility 0s .35s}.badge.flipped .face.nextc:not(.back),.badge:not(.flipped) .face.nextc.back{visibility:hidden}}
+@media (max-width:760px){.face.nextc{-webkit-backface-visibility:hidden;transform:translateZ(1px)}.face.back.nextc{transform:rotateY(180deg) translateZ(1px)}.badge.flipping .nextc .main:before,.badge.flipping .nextc .seal,.badge.flipping .nextc::after{animation:none!important}}
 @media (max-width:760px){.badge{touch-action:none}.copy{pointer-events:none}.pc:not(.off):not(.up){pointer-events:auto}}
 .after{height:0}
 .meta2 span{display:block}
@@ -448,7 +448,7 @@ badge.addEventListener('animationend',()=>badge.classList.remove('shine'));
 badge.addEventListener('pointerdown',e=>{drag=true;moved=0;lastX=e.clientX;lastY=e.clientY;badge.setPointerCapture(e.pointerId)});
 badge.addEventListener('pointermove',e=>{if(!drag)return;const d=(e.clientX-lastX)/TUNE.dragSens;moved+=Math.abs(e.clientX-lastX)+Math.abs(e.clientY-lastY);lastY=e.clientY;ang=Math.max(-.6,Math.min(.6,ang+d));vel=d*.5;lastX=e.clientX});
 const endDrag=()=>{drag=false};badge.addEventListener('pointercancel',endDrag);badge.addEventListener('lostpointercapture',endDrag);
-badge.addEventListener('pointerup',()=>{if(!drag)return;drag=false;if(moved<6){mtap.dataset.done=1;mtap.style.opacity=0;badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
+badge.addEventListener('pointerup',()=>{if(!drag)return;drag=false;if(moved<6){mtap.dataset.done=1;mtap.style.opacity=0;badge.classList.add('flipping');clearTimeout(badge._ft);badge._ft=setTimeout(()=>badge.classList.remove('flipping'),800);badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
 // scroll → career
 const stage=document.getElementById('stage'),strip=document.getElementById('strip'),bar=document.getElementById('bar'),ticks=[...document.querySelectorAll('.tick')];
 const rail=[...document.querySelectorAll('.rail button')],rfill=document.getElementById('rfill');
