@@ -230,10 +230,12 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .lang{box-sizing:border-box;height:32px;width:116px;align-items:center;font-size:12.5px!important}
 .lang button:last-of-type{font-size:11.5px;letter-spacing:-.02em}.lang button{flex:1;display:inline-flex!important;align-items:center;justify-content:center;height:24px;padding:0!important;line-height:1}
 @media (max-width:760px){.rbtn{height:28px;padding:0 10px!important;font-size:12px!important}.lang{height:28px;width:100px}.lang button{height:20px}}
+@media (max-width:760px) and (max-height:780px){.rigwrap{transform:scale(.48)}}
+.f2{font-size:13px}.lb{font-size:12px}
 .mx{align-items:stretch}
 .mx .r{display:flex;flex-direction:column;justify-content:space-between;padding:4px 0 2px}
 .mx .go3{margin-top:0;align-self:flex-start}
-</style><link rel="stylesheet" href="site.css?v=2">
+</style><link rel="stylesheet" href="site.css?v=3">
 </head>
 <body data-theme="1" data-lang="en" data-enf="instrument" data-kof="noto" data-punct="inst">
 <nav><span data-en="Chan Kang" data-ko="강감찬">Chan Kang</span>
@@ -349,7 +351,7 @@ function drawQR(){const el=document.getElementById('qrNext');if(!el||el.dataset.
 function render(k){const t=T[k],c=t[lang];applyBg(k);badge.classList.remove('shine');try{const sc=(BGM==='2'||BGM==='3')?'#111214':(STRAP[k]||'#111');sL.setAttribute('fill',sc);sR.setAttribute('fill',sc)}catch(_){}
  const side=`<div class="side" style="background:${t.sideBg};color:${t.sideFg}"><span>${t.side}</span></div>`;
  const fr=FRONT[k]||{};const L2=lang==='ko'?{y:'재직',l:'근무지'}:{y:'Years',l:'Location'};
- const front= k==='id' ? `<div class="face"><div class="idc" style="grid-column:1/3"><div class="ph">photo</div><div class="acc"></div><div class="bd"><div class="k2">${c.kind}</div><div class="n2">${c.nm}</div><div class="r2">${c.rl}</div><div class="r2">Human Factors Eng. · Tufts</div><div class="f2"><span>English · 한국어</span><span>${c.ft[1]}</span></div></div></div><div class="slot"></div></div>`
+ const front= k==='id' ? `<div class="face"><div class="idc" style="grid-column:1/3"><div class="ph">photo</div><div class="acc"></div><div class="bd"><div class="k2">${c.kind}</div><div class="n2">${c.nm}</div><div class="r2">${c.rl}</div><div class="f2"><span>English · 한국어</span></div></div></div><div class="slot"></div></div>`
  : k==='next' ? `<div class="face nextc"><div class="side" style="background:${t.sideBg};color:${t.sideFg}"><span>Your team</span></div><div class="main"><div class="logo"><div class="ylogo${COMPANY?' filled':''}">${COMPANY||(lang==='ko'?'회사 이름':'your company')}</div></div><div class="ttl" style="margin-top:18px">Senior UX Researcher</div><div class="idrow"><div><span>${L2.l}</span><b>${lang==='ko'?'서울 · 원격':'Seoul · Remote<br>Open to relocation'}</b></div></div><div class="pass"><i class="seal"></i></div></div><div class="slot"></div></div>`
  : `<div class="face"><div class="side" style="background:${t.sideBg};color:${t.sideFg}"><span>${fr.en.dept}</span></div><div class="main"><div class="logo"><img src="logos/${fr.logo}" alt="${t.side}"></div><div class="ttl">${c.rl.split(' · ')[0]}</div><div class="dept">${fr[lang].area}</div><div class="idrow"><div><span>${L2.y}</span><b>${c.kind.split(' · ')[1]}</b></div><div><span>${L2.l}</span><b>${fr[lang].loc}</b></div></div><div class="bars"></div></div><div class="slot"></div></div>`;
  flipper.innerHTML=front+`
@@ -420,5 +422,5 @@ const qs=new URLSearchParams(location.search);
 if(qs.get('k')){removeEventListener('scroll',onScroll);cur=qs.get('k');pending=null;liftT=0;lift=0;render(cur);if(qs.get('flip'))badge.classList.add('flipped');tip.style.display='none';
  showPanel(cur);const i=order.indexOf(cur)-1;ticks.forEach((t,j)=>t.classList.toggle('on',j===i));if(i>=0){bar.style.width=((i+.5)/5*100)+'%'};rail.forEach(b=>b.classList.toggle('on',+b.dataset.i===i));rfill.style.height=((i+1)/5*100)+'%'}if(qs.get('kof'))document.querySelector(`.review button[data-k="${qs.get('kof')}"]`).click();if(qs.get('lang'))setLang(qs.get('lang'));
 </script>
-<script src="site.js?v=2"></script>
+<script src="site.js?v=3"></script>
 </body></html>

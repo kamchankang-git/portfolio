@@ -17,3 +17,9 @@
 .cvbox .cvmsg a,.cvbox .cvdone a{color:var(--ac,#2443B8)}
 .cvbox .cvdone{font-size:15px;line-height:1.55;padding:6px 0;margin:0}
 @media (prefers-reduced-motion:reduce){.cvbox,.cvbox .go2{transition:none}}
+
+/* Bigger invisible tap areas for small links and buttons (looks unchanged) */
+.links a,.lang button,.mailx,.go3,.rail button,nav>a:first-child{position:relative}
+.links a::after,.mailx::after,.go3::after,nav>a:first-child::after{content:'';position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
+.lang button::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.rail button::after{content:'';position:absolute;left:-10px;right:-10px;top:50%;height:32px;transform:translateY(-50%)}
