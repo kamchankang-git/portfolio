@@ -174,20 +174,6 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .cta3 button.s{font:inherit;font-size:17px;font-weight:600;padding:17px 26px;border-radius:14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
 .cta3 button.s:hover{background:var(--ink);color:#fff}
 .mailx{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}.mailx:hover{color:var(--ink)}
-.cvm{position:fixed;inset:0;z-index:100;background:rgba(17,18,20,.35);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
-.cvm[hidden]{display:none}
-.cvbox{position:relative;width:min(420px,100%);background:#fff;border-radius:18px;padding:28px 26px 24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
-.cvbox h3{font-size:22px;letter-spacing:-.02em}.cvbox .d{font-size:14px;color:var(--muted);margin-top:6px}
-.cvbox .x{all:unset;position:absolute;right:14px;top:10px;cursor:pointer;font-size:24px;line-height:1;color:var(--muted);padding:4px 8px}
-.cvbox .tabs{display:flex;gap:6px;margin-top:18px;background:#f2f3f6;border-radius:10px;padding:4px}
-.cvbox .tabs button{flex:1;all:unset;flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer}
-.cvbox .tabs button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.cvbox .pane{display:grid;gap:8px;margin-top:14px}.cvbox .pane[hidden]{display:none}
-.cvbox input{min-width:0;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--rule);border-radius:10px}
-.cvbox .go2{font:inherit;font-size:15px;font-weight:600;padding:13px;border-radius:10px;border:0;background:var(--ink);color:#fff;cursor:pointer;margin-top:4px}
-.cvbox .go2:disabled{opacity:.6;cursor:default}
-.cvbox .cvmsg{font-size:13.5px;color:var(--muted);margin-top:2px}.cvbox .cvmsg:empty{display:none}.cvbox .cvmsg a,.cvbox .cvdone a{color:var(--ac)}
-.cvbox .cvdone{font-size:15px;line-height:1.55;padding:6px 0}
 .modes{font-size:13px;color:var(--muted);margin:-6px 0 14px}
 .lk{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-top:22px}
 .lk+.pts{margin-top:10px}
@@ -231,8 +217,6 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 :root{--ease-out:cubic-bezier(.23,1,.32,1)}
 .cta3 a,.cta3 button.s,.rbtn,.cvbox .go2,.sub button,.flist a{transition:transform 160ms var(--ease-out),background-color .2s ease,color .2s ease,box-shadow .2s ease}
 .cta3 a:active,.cta3 button.s:active,.rbtn:active,.cvbox .go2:active,.sub button:active{transform:scale(.97)}
-.cvm .cvbox{transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out)}
-@starting-style{.cvm:not([hidden]) .cvbox{opacity:0;transform:scale(.96)}}
 @media (hover:none){.cta3 .p:hover{transform:none}.post:hover h2,.flist a[href]:hover h3{color:inherit}}
 @media (prefers-reduced-motion:reduce){.nextc .main:before,.nextc .seal,.status i,.bars.holo{animation:none!important}}
 .rt{display:flex;align-items:center;gap:10px}
@@ -344,7 +328,7 @@ function applyBg(k){if(!BGM)return;const b=document.body.style,st=document.query
 let COMPANY='';
 function wireNext(){const inp=document.getElementById('coIn');if(!inp||inp.dataset.w)return;inp.dataset.w=1;
  inp.addEventListener('input',()=>{COMPANY=inp.value.trim();inp.parentElement.classList.toggle('has',!!COMPANY);document.querySelectorAll('.nextc .ylogo').forEach(e=>{e.textContent=COMPANY||(lang==='ko'?'회사 이름':'your company');e.classList.toggle('filled',!!COMPANY)})});
- document.getElementById('cvBtn').onclick=openCV}
+ document.getElementById('cvBtn').onclick=()=>openCV()}
 setInterval(wireNext,400);
 const TYPE={ko:['회사 이름을 적어 보세요','어느 회사에서 오셨나요?','같이 일해 볼까요?'],en:["Your company name",'Which company are you with?','Could this be my next team?']};
 (function typer(){let li=0,ci=0,del=false;function tick(){const inp=document.getElementById('coIn');if(!inp){setTimeout(tick,500);return}
@@ -353,14 +337,6 @@ const TYPE={ko:['회사 이름을 적어 보세요','어느 회사에서 오셨�
  if(!del){ci++;inp.placeholder=t.slice(0,ci);if(ci>=t.length){del=true;setTimeout(tick,1800);return}setTimeout(tick,85)}
  else{ci--;inp.placeholder=t.slice(0,Math.max(ci,0));if(ci<=0){del=false;li++;setTimeout(tick,350);return}setTimeout(tick,35)}}
  tick()})();
-function openCV(){const ko=lang==='ko';const m=document.getElementById('cvModal');m.innerHTML=`<div class="cvbox" role="dialog" aria-modal="true"><button class="x" aria-label="close">×</button><h3>${ko?'이력서 받기':'Get my resume'}</h3><p class="d">${ko?'이력서는 요청해 주신 분께 직접 보내드려요.':'I send my resume directly to people who ask.'}</p><div class="pane" data-p="req"><input id="rqName" placeholder="${ko?'이름':'Name'}"><input id="rqCo" placeholder="${ko?'회사':'Company'}" value="${COMPANY.replace(/"/g,'&quot;')}"><input id="rqCt" placeholder="${ko?'이메일 또는 연락처':'Email or phone'}"><button class="go2" id="rqSend">${ko?'요청 보내기':'Send request'}</button></div></div>`;
- const opener=document.activeElement;m.hidden=false;const esc=e=>{if(e.key==='Escape'&&!m.hidden){e.preventDefault();close()}};const close=()=>{m.hidden=true;document.removeEventListener('keydown',esc,true);if(opener&&opener.focus)opener.focus()};document.addEventListener('keydown',esc,true);m.onkeydown=e=>{e.stopPropagation();if(e.key==='Tab'){const f=[...m.querySelectorAll('button:not([disabled]),input,a[href]')];const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}};const fin=()=>{const i=m.querySelector('#rqName');if(i&&!m.contains(document.activeElement))i.focus({preventScroll:true})};requestAnimationFrame(fin);setTimeout(fin,250);m.querySelector('.x').onclick=close;m.onclick=e=>{if(e.target===m)close()};
- const FORM='https://formspree.io/f/mvkzkjyo';const btn=m.querySelector('#rqSend');const pane=m.querySelector('.pane');const msg=t=>{let e=m.querySelector('.cvmsg');if(!e){e=document.createElement('p');e.className='cvmsg';e.setAttribute('role','status');pane.appendChild(e)}e.innerHTML=t};
- btn.onclick=async()=>{const v=id=>m.querySelector(id).value.trim();const ct=v('#rqCt');if(!ct){msg(ko?'답장 받을 이메일이나 연락처를 적어 주세요.':'Please add an email or phone so I can reach you.');m.querySelector('#rqCt').focus();return}
-  btn.disabled=true;btn.textContent=ko?'보내는 중…':'Sending…';msg('');
-  try{const r=await fetch(FORM,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:v('#rqName'),company:v('#rqCo'),contact:ct,_subject:(ko?'이력서 요청: ':'Resume request: ')+(v('#rqCo')||'-')})});if(!r.ok)throw 0;
-   pane.innerHTML=`<p class="cvdone">${ko?'요청을 보냈어요. 확인하는 대로 이력서를 보내드릴게요.':"Request sent. I'll email my resume shortly."}</p>`}
-  catch(e){btn.disabled=false;btn.textContent=ko?'요청 보내기':'Send request';const a='<a href="mailto:kamchan.kang@gmail.com">kamchan.kang@gmail.com</a>';msg(ko?`전송에 실패했어요. ${a}으로 직접 메일 주세요.`:`Couldn't send that. Please email me directly at ${a}.`)}};}
 
 function NEXTBACK(){const ko=lang==='ko';return `<div class="tease"><div class="t1">${ko?'뒤집어 보셨네요 👀':'You flipped it 👀'}</div><p>${ko?'이런 호기심이 있는 팀이라면, 만드는 제품도 궁금해지네요.':'Curiosity like this usually leads to something worth hearing about.'}</p><p class="t2">${ko?'서로 궁금한 것, 커피 한 잔 하며 나눠 볼까요?':'Let’s trade questions over coffee.'}</p><div class="qrrow"><div class="qrbox" id="qrNext"></div><a class="say" href="https://www.linkedin.com/in/chan-kang" target="_blank" rel="noopener">${ko?'LinkedIn으로 인사 나누기':'Say hi on LinkedIn'} <b>→</b></a></div></div>`}
 function drawQR(){const el=document.getElementById('qrNext');if(!el||el.dataset.done||!window.QRCode)return;el.dataset.done=1;new QRCode(el,{text:'https://www.linkedin.com/in/chan-kang',width:76,height:76,colorDark:'#1a1f3d',colorLight:'rgba(255,255,255,0)',correctLevel:QRCode.CorrectLevel.M})}
@@ -432,12 +408,11 @@ function onScroll(){const total=stage.offsetHeight-innerHeight,p=Math.min(1,Math
  bar.style.width=q*100+'%';
  const idx=p<.1?-1:Math.min(4,Math.floor(q*5));ticks.forEach((t,i)=>t.classList.toggle('on',i===idx));lastIdx=idx;rail.forEach(b=>b.classList.toggle('on',+b.dataset.i===idx));rfill.style.height=((idx+1)/5*100)+'%';clearTimeout(snapT);snapT=setTimeout(()=>{goal=null;settle()},220);{const rr=stage.getBoundingClientRect();document.body.classList.toggle('past',rr.bottom<innerHeight*.5)}swapTo(order[idx+1]);showPanel(order[idx+1])}
 addEventListener('scroll',onScroll,{passive:true});
-setLang((new URLSearchParams(location.search).get('lang')||(function(){try{return localStorage.getItem('lang')}catch(e){return null}})())||'en');onScroll();document.querySelectorAll('.rbtn').forEach(a=>a.onclick=e=>{e.preventDefault();openCV()});if(new URLSearchParams(location.search).get('cv')==='1')addEventListener('load',()=>openCV());
+setLang((new URLSearchParams(location.search).get('lang')||(function(){try{return localStorage.getItem('lang')}catch(e){return null}})())||'en');onScroll();
 // review helpers
 const qs=new URLSearchParams(location.search);
 if(qs.get('k')){removeEventListener('scroll',onScroll);cur=qs.get('k');pending=null;liftT=0;lift=0;render(cur);if(qs.get('flip'))badge.classList.add('flipped');tip.style.display='none';
  showPanel(cur);const i=order.indexOf(cur)-1;ticks.forEach((t,j)=>t.classList.toggle('on',j===i));if(i>=0){bar.style.width=((i+.5)/5*100)+'%'};rail.forEach(b=>b.classList.toggle('on',+b.dataset.i===i));rfill.style.height=((i+1)/5*100)+'%'}if(qs.get('kof'))document.querySelector(`.review button[data-k="${qs.get('kof')}"]`).click();if(qs.get('lang'))setLang(qs.get('lang'));
 </script>
-<div id="cvModal" class="cvm" hidden></div>
 <script src="site.js"></script>
 </body></html>

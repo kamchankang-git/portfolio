@@ -1,1 +1,19 @@
 /* Site-wide overrides. Loaded last on every page, including locked case pages after unlock. */
+
+/* Resume request modal, shared by every page (built in site.js) */
+.cvm{position:fixed;inset:0;z-index:100;background:rgba(17,18,20,.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
+.cvm[hidden]{display:none}
+.cvbox{position:relative;width:min(420px,100%);background:#fff;color:var(--ink,#111214);border-radius:18px;padding:28px 26px 24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35);text-align:left;transition:opacity 200ms cubic-bezier(.23,1,.32,1),transform 200ms cubic-bezier(.23,1,.32,1)}
+@starting-style{.cvm:not([hidden]) .cvbox{opacity:0;transform:scale(.96)}}
+.cvbox h3{margin:0;font-size:22px;letter-spacing:-.02em;line-height:1.25}
+.cvbox .d{font-size:14px;color:var(--muted,#6E7076);margin:6px 0 0}
+.cvbox .x{all:unset;position:absolute;right:14px;top:10px;cursor:pointer;font-size:24px;line-height:1;color:var(--muted,#6E7076);padding:4px 8px}
+.cvbox .pane{display:grid;gap:8px;margin-top:14px}
+.cvbox input{min-width:0;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--rule,#E6E7EA);border-radius:10px;background:#fff;color:inherit}
+.cvbox .go2{font:inherit;font-size:15px;font-weight:600;padding:13px;border-radius:10px;border:0;background:var(--ink,#111214);color:#fff;cursor:pointer;margin-top:4px;transition:transform 160ms cubic-bezier(.23,1,.32,1)}
+.cvbox .go2:active{transform:scale(.97)}
+.cvbox .go2:disabled{opacity:.6;cursor:default}
+.cvbox .cvmsg{font-size:13.5px;color:var(--muted,#6E7076);margin:2px 0 0}.cvbox .cvmsg:empty{display:none}
+.cvbox .cvmsg a,.cvbox .cvdone a{color:var(--ac,#2443B8)}
+.cvbox .cvdone{font-size:15px;line-height:1.55;padding:6px 0;margin:0}
+@media (prefers-reduced-motion:reduce){.cvbox,.cvbox .go2{transition:none}}
