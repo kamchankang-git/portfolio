@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — Chan Kang</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#111214;--muted:#6E7076;--ac:#2443B8;--rule:#E6E7EA;--pt:#33353a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased}
+body[data-lang="ko"]{font-family:'Instrument Sans','IBM Plex Sans KR',sans-serif;word-break:keep-all}
+body[data-lang="ko"] h1,body[data-lang="ko"] h2,body[data-lang="ko"] h3{font-family:'Instrument Sans','Noto Sans KR',sans-serif}
+body[data-lang="en"] [data-l="ko"],body[data-lang="ko"] [data-l="en"]{display:none!important}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;font-size:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+nav .links{display:flex;gap:28px;color:var(--muted)}nav .links a.on{color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;position:relative;font-size:12px}
+.lang button{all:unset;cursor:pointer;padding:5px 12px;border-radius:999px;position:relative;z-index:1;color:var(--muted)}.lang button.on{color:#fff}
+.lang i{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--ink);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+body[data-lang="ko"] .lang i{transform:translateX(100%)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+header{padding:72px 0 48px}
+h1{font-size:clamp(44px,5.4vw,80px);font-weight:700;letter-spacing:-.04em;line-height:1}
+body[data-lang="ko"] h1{font-weight:800;letter-spacing:-.03em}
+.dek{font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--pt);max-width:640px;margin-top:18px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin:24px 0 18px}
+.sh h2{font-size:15px;font-weight:600}.sh span{font-size:13px;color:var(--muted)}
+/* featured */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{position:relative;border:1px solid var(--rule);border-radius:18px;padding:26px 28px 24px;display:flex;flex-direction:column;min-height:300px;transition:border-color .2s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.card:hover{border-color:transparent;transform:translateY(-3px);box-shadow:0 24px 50px -28px rgba(17,18,20,.35)}
+.card .band{position:absolute;left:0;top:0;bottom:0;width:6px;border-radius:18px 0 0 18px;background:var(--c)}
+.card .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.card .top b{font-weight:600;color:var(--ink)}
+.card h3{font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-top:18px}
+body[data-lang="ko"] .card h3{font-weight:800;line-height:1.35}
+.card p{font-size:15px;line-height:1.6;color:var(--pt);margin-top:10px}
+.card .bot{margin-top:auto;padding-top:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.card .m b{display:block;font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ac)}
+.card .m span{font-size:12.5px;color:var(--muted)}
+.card .go{font-size:14px;font-weight:600;white-space:nowrap}.card:hover .go{color:var(--ac)}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.card .tags span{font-size:11.5px;padding:4px 9px;border:1px solid var(--rule);border-radius:999px;color:var(--muted)}
+.soon{opacity:.55}.soon .go{color:var(--muted)}
+.flist a{display:grid;grid-template-columns:168px 1fr auto;gap:30px;align-items:center;padding:22px 0;border-top:1px solid var(--rule)}
+.flist a:last-child{border-bottom:1px solid var(--rule)}
+.flist h3{font-size:clamp(22px,2.2vw,30px);font-weight:700;letter-spacing:-.03em;line-height:1.3}
+body[data-lang="ko"] .flist h3{font-weight:800}
+.flist .co{display:flex;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:8px}.flist .co span+span:before{content:'·';margin-right:10px}
+.flist .ar{font-size:14px;color:var(--muted);transition:transform .3s;white-space:nowrap}
+.flist a[href]:hover .ar{transform:translateX(6px);color:var(--ac)}.flist a[href]:hover h3{color:var(--ac)}
+.flist a.soon h3{color:#55575c}.flist a.soon{cursor:default}
+.th{aspect-ratio:4/3;border-radius:10px;overflow:hidden;position:relative}
+.cv{position:absolute;inset:0;background:#EEEFF2;display:flex;align-items:center;justify-content:center}
+.cv:after{content:'';position:absolute;left:22%;right:22%;bottom:10%;height:8px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.18),transparent)}
+.c1 img{position:absolute;width:74%;left:13%;top:12%;z-index:1}.c4 img{position:absolute;height:74%;left:50%;top:10%;transform:translateX(-50%);z-index:1}
+.poster{z-index:1;width:42%;aspect-ratio:3/4;background:#fff;box-shadow:0 8px 14px -8px rgba(0,0,0,.35);transform:rotate(-3deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10%}
+.poster b{font-size:10px;font-weight:700;letter-spacing:-.02em}
+.qr{width:42%;aspect-ratio:1;background:conic-gradient(#111 0 25%,#fff 0 50%,#111 0 75%,#fff 0) 0 0/25% 25%}
+.card3{z-index:1;width:58%;aspect-ratio:1.6;background:#fff;border-radius:4px;box-shadow:0 8px 14px -8px rgba(0,0,0,.3);transform:rotate(2.5deg);display:flex;flex-direction:column;justify-content:center;padding:0 9%;gap:1px}
+.nm{font-size:10px;font-weight:700;letter-spacing:-.02em}.nm s{text-decoration:none;color:var(--ac)}.nm.x{opacity:.35}.nm.x s{color:#9aa0ab}
+@media (max-width:860px){.flist a{grid-template-columns:96px 1fr;gap:16px}.flist .ar{display:none}}
+/* index */
+.index{margin-top:96px;padding-bottom:96px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{all:unset;cursor:pointer;font-size:13px;padding:7px 14px;border:1px solid var(--rule);border-radius:999px;color:var(--muted)}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.grp{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:26px 0;border-top:1px solid var(--rule)}
+.grp .co b{display:block;font-size:17px;font-weight:700}.grp .co span{font-size:13px;color:var(--muted);line-height:1.5}
+.rows{display:grid}
+.row{display:grid;grid-template-columns:1fr auto;gap:16px;padding:11px 0;border-bottom:1px dashed var(--rule);font-size:15px;line-height:1.45}
+.row:last-child{border:0}
+.row em{font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.row .f{color:var(--ac);font-size:12px;font-weight:600;margin-left:8px}
+.row.hide{display:none}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:10px 0;list-style:none}
+@media (max-width:860px){nav{padding:16px}.wrap{padding:0 16px}nav .links{display:none}.cards{grid-template-columns:1fr}.grp{grid-template-columns:1fr;gap:12px}}
+.rt{display:flex;gap:12px;align-items:center}.rbtn{font-size:13px;font-weight:600;padding:6px 14px;border:1.5px solid var(--ink);border-radius:999px;text-decoration:none;color:var(--ink);transition:background .2s,color .2s}.rbtn:hover{background:var(--ink);color:var(--bg,#fff)}nav .links a{text-decoration:none;color:inherit}nav .links a.on{color:var(--ink)}@media (max-width:860px){nav .links{display:flex!important;gap:14px;font-size:13px}.rbtn{padding:5px 10px;font-size:12px}.dek br{display:none}.impact div{padding:20px 22px}.impact .big{font-size:40px}.kpis{grid-template-columns:1fr 1fr!important}.tbl{font-size:13px}.tbl td,.tbl th{padding:9px 6px}}
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+.cta3 a,.cta3 button.s,.rbtn,.cvbox .go2,.sub button,.flist a{transition:transform 160ms var(--ease-out),background-color .2s ease,color .2s ease,box-shadow .2s ease}
+.cta3 a:active,.cta3 button.s:active,.rbtn:active,.cvbox .go2:active,.sub button:active{transform:scale(.97)}
+.cvm .cvbox{transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out)}
+@starting-style{.cvm:not([hidden]) .cvbox{opacity:0;transform:scale(.96)}}
+@media (hover:none){.cta3 .p:hover{transform:none}.post:hover h2,.flist a[href]:hover h3{color:inherit}}
+@media (prefers-reduced-motion:reduce){.nextc .main:before,.nextc .seal,.status i,.bars.holo{animation:none!important}}
+.rt{display:flex;align-items:center;gap:10px}
+.rbtn{display:inline-flex!important;align-items:center;box-sizing:border-box;height:32px;padding:0 14px!important;font-size:13px!important;line-height:1}
+.lang{box-sizing:border-box;height:32px;width:116px;align-items:center;font-size:12.5px!important}
+.lang button:last-of-type{font-size:11.5px;letter-spacing:-.02em}.lang button{flex:1;display:inline-flex!important;align-items:center;justify-content:center;height:24px;padding:0!important;line-height:1}
+@media (max-width:760px){.rbtn{height:28px;padding:0 10px!important;font-size:12px!important}.lang{height:28px;width:100px}.lang button{height:20px}}
+</style></head>
+<body data-lang="ko">
+<nav><a href="index.html"><span data-l="en">Chan Kang</span><span data-l="ko">강감찬</span></a>
+ <span class="links"><a class="on" href="work.html" >Projects</a></span>
+ <span class="rt"><a class="rbtn" href="index.html?cv=1">Resume</a><span class="lang"><i></i><button data-s="en">EN</button><button data-s="ko" class="on">한국어</button></span></span></nav>
+
+<main class="wrap">
+ <header>
+  <h1 data-l="ko">Projects</h1><h1 data-l="en">Projects</h1>
+ </header>
+
+ <div class="sh"><h2 data-l="ko">대표 케이스</h2><h2 data-l="en">Featured cases</h2><span>04</span></div>
+ <div class="flist">
+  <a href="work_case_premium.html"><div class="th"><div class="cv c1"><img src="assets/orzo_tablets_t.png" alt=""></div></div>
+   <div><h3 data-l="ko">프리미엄 수익화 재설계</h3><h3 data-l="en">Premium monetization redesign</h3>
+   <div class="co"><span>Sling (ORZO) · 2023–2024</span><span data-l="ko">이용권 재설계 후 분기 매출 +216%</span><span data-l="en">Quarterly revenue +216% after the plan redesign</span></div></div><span class="ar">→</span></a>
+  <a href="work_case_us.html"><div class="th"><div class="cv c2"><div class="poster"><b>Pre-med?</b><div class="qr"></div></div></div></div>
+   <div><h3 data-l="ko">미국 시장 진출 통합 리서치</h3><h3 data-l="en">US market-entry research</h3>
+   <div class="co"><span>Sling (ORZO) · 2025</span><span data-l="ko">시험 시장별 Go/No-go 권고, 두 시장 출시로 이어짐</span><span data-l="en">Go/No-go calls per exam market; two led to launches</span></div></div><span class="ar">→</span></a>
+  <a href="work_case_naming.html"><div class="th"><div class="cv c3"><div class="card3"><div class="nm">Prep<s>Wise</s></div><div class="nm">Test<s>Genie</s></div><div class="nm x">Test<s>Wise</s></div></div></div></div>
+   <div><h3 data-l="ko">글로벌 앱 네이밍 서베이</h3><h3 data-l="en">Global app naming survey</h3>
+   <div class="co"><span>Sling (ORZO) · 2024–2025</span><span data-l="ko">후보별 브랜드 성격을 밝혀 TestGenie 결정을 지원</span><span data-l="en">Mapped each name’s brand character to support choosing TestGenie</span></div></div><span class="ar">→</span></a>
+  <a href="work_case_bose.html"><div class="th"><div class="cv c4"><img src="assets/bose_nch700_t.png" alt=""></div></div>
+   <div><h3 data-l="ko">터치 헤드폰 제스처 사용성 실험</h3><h3 data-l="en">Touch-headphone gesture experiment</h3>
+   <div class="co"><span>Bose · 2018–2019</span><span data-l="ko">오작동의 83%를 한 제스처에서 찾아 구성 선정을 지원</span><span data-l="en">Traced 83% of misfires to one gesture to support the tuning choice</span></div></div><span class="ar">→</span></a>
+ </div>
+</main>
+<script>
+// m: qual | quant | mixed | ops ; f: featured case no.
+const G=[];
+const ML={qual:{ko:'정성',en:'Qual'},quant:{ko:'정량',en:'Quant'},mixed:{ko:'혼합',en:'Mixed'},ops:{ko:'운영',en:'Ops'}};
+let lang='ko',flt='all';
+function row(x){const [en,ko,m,f]=x;return `<div class="row" data-m="${m}"><span>${lang==='ko'?ko:en}${f?`<span class="f">${lang==='ko'?'케이스':'Case'} 0${f}</span>`:''}</span><em>${ML[m][lang]}</em></div>`}
+function draw(){let n=0;(document.getElementById('groups')||{}).innerHTML=G.map(g=>{const co=typeof g.co==='string'?g.co:g.co[lang];n+=g.r.length+(g.hidden||[]).length;
+ return `<div class="grp"><div class="co"><b>${co}</b><span>${g.y}${g.y&&g.d[lang]?'<br>':''}${g.d[lang]}</span></div><div class="rows">${g.r.map(row).join('')}${g.hidden?`<details><summary>${lang==='ko'?'더 보기':'More'}</summary>${g.hidden.map(row).join('')}</details>`:''}</div></div>`}).join('');
+ document.getElementById('cnt').textContent=n+(lang==='ko'?'개 프로젝트':' projects');applyF()}
+function applyF(){document.querySelectorAll('.row').forEach(r=>r.classList.toggle('hide',flt!=='all'&&r.dataset.m!==flt));document.querySelectorAll('.filters button').forEach(b=>b.classList.toggle('on',b.dataset.f===flt))}
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{flt=b.dataset.f;applyF()});
+function setLang(l){try{localStorage.setItem('lang',l)}catch(e){};lang=l;document.body.dataset.lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.s===l));draw()}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.s));
+setLang((new URLSearchParams(location.search).get('lang')||(function(){try{return localStorage.getItem('lang')}catch(e){return null}})())||'ko');
+</script>
+</body></html>
