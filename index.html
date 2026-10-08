@@ -230,8 +230,25 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .lang{box-sizing:border-box;height:32px;width:116px;align-items:center;font-size:12.5px!important}
 .lang button:last-of-type{font-size:11.5px;letter-spacing:-.02em}.lang button{flex:1;display:inline-flex!important;align-items:center;justify-content:center;height:24px;padding:0!important;line-height:1}
 @media (max-width:760px){.rbtn{height:28px;padding:0 10px!important;font-size:12px!important}.lang{height:28px;width:100px}.lang button{height:20px}}
-@media (max-width:760px) and (max-height:780px){.rigwrap{transform:scale(.48)}}
 .f2{font-size:13px}.lb{font-size:12px}
+.axes{grid-template-columns:repeat(3,max-content);gap:14px 36px}
+.bgline{font-size:13px;color:var(--muted);margin-top:14px}
+@media (max-width:1180px){.axes{grid-template-columns:repeat(2,max-content)}}
+.badge{touch-action:pan-y}
+.after{height:0}
+.meta2 span{display:block}
+@media (max-width:760px){
+ .bgline,.axes{display:none}
+ .corow{flex-direction:column;align-items:flex-start;gap:6px}
+ .meta2{padding-bottom:0}.meta2 span{display:inline}.meta2 span+span:before{content:' · '}
+}
+@media (max-width:760px) and (max-height:780px){
+ .status{margin-bottom:4px}.modes{margin:0 0 4px}.co .cin input{font-size:21px!important}
+ .lk{margin-top:8px}.pts{margin-top:8px;gap:3px}.pts div{font-size:13.5px;line-height:1.4}
+ .cta3{gap:6px;margin-top:12px}.cta3 a,.cta3 button.s{padding:11px 18px}
+ .mailx{margin-top:10px}
+ .cat{margin-bottom:4px}.corow{gap:2px}.lead2{font-size:16px;margin-top:8px}.mx{margin-top:14px}.mx .n,.mx b{font-size:36px}
+}
 .mx{align-items:stretch}
 .mx .r{display:flex;flex-direction:column;justify-content:space-between;padding:4px 0 2px}
 .mx .go3{margin-top:0;align-self:flex-start}
@@ -302,8 +319,8 @@ sendbird:['Developer Platform','Developer Experience','ResearchOps','Conversatio
 sling:['B2C EdTech','Tablet & Mobile','Monetization','Pricing Research','Global Expansion','Product Analytics','AI-assisted Research']};
 const order=['id','bose','akamai','sendbird','sling','next'];
 const P={
- id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><div class="axes"><div><b>Human Factors Eng.</b>Tufts University</div><div><b>Bose · Akamai</b>established research teams</div><div><b>Series A</b>+216% YoY quarterly revenue</div><div><b>English · Korean</b>native in both</div></div>`,
-     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><div class="axes"><div><b>Human Factors Eng.</b>Tufts University</div><div><b>Bose · Akamai</b>체계가 잡힌 리서치 조직</div><div><b>시리즈 A</b>분기 매출 전년 대비 +216%</div><div><b>영어 · 한국어</b>둘 다 모국어 수준</div></div>`},
+ id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><div class="axes"><div><b>8 years</b>UX research in the US and Korea</div><div><b>Consumer Electronics</b><b>Enterprise SaaS (Akamai, Sendbird)</b><b>B2C Tablet &amp; Mobile EdTech</b></div><div><b>English · Korean</b>native in both</div></div><p class="bgline">Background in Human Factors Engineering (Tufts)</p>`,
+     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><div class="axes"><div><b>9년차</b>미국과 한국에서 UX 리서치</div><div><b>소비자 전자기기</b><b>엔터프라이즈 SaaS (Akamai, Sendbird)</b><b>B2C 태블릿·모바일 에듀테크</b></div><div><b>영어 · 한국어</b>둘 다 모국어 수준</div></div><p class="bgline">인간공학 전공 (Tufts)</p>`},
  bose:{en:{cat:'Hardware',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Shaped the gesture experience of Bose’s first touch-control headphones.',p:['Designed the gesture-testing protocol for the NCH 700 — a counterbalanced study with 23 participants','Built the experiment setup that became the template for later touch-tuning studies','Flagged comprehension issues in a voice-prompt change, which led to the update being pulled'],n:'94%',d:'gesture accuracy of the chosen configuration',k:'Read the case',href:'work_case_bose.html'},
        ko:{cat:'하드웨어',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Bose의 첫 터치 컨트롤 헤드폰의 제스처 경험을 다듬었습니다.',p:['Bose 첫 터치 컨트롤 헤드폰(NCH 700)의 제스처 테스트 프로토콜 설계','이후 터치 튜닝 연구의 표준 템플릿이 된 실험 체계 구축','노이즈 캔슬링 음성 안내 변경안의 이해도 문제를 발견해 도입 중단으로 연결'],n:'94%',d:'선택된 구성의 제스처 정확도',k:'케이스 보기',href:'work_case_bose.html'}},
  akamai:{en:{cat:'Enterprise SaaS',y:'2019–2021',loc:'Cambridge, MA',c:'Akamai',l:'Helped enterprise users find what was worth paying for.',p:['Mixed-methods research on the freemium-to-paid journey','Surfaced key navigation issues in a product used by 1,000+ client companies','Trained UX designers in usability-testing methods'],n:'+30%',d:'organic discovery of paid features',k:'Research index'},
@@ -317,7 +334,7 @@ function buildPanels(){const el=document.getElementById('copy');el.innerHTML=ord
  if(k==='id')return `<div class="pc" data-k="id">${P.id[lang]}</div>`;
  if(k==='next'){const ko=lang==='ko';const n=ko?{p:['사용자 이해가 제품과 비즈니스 결정으로 이어지는 조직','글로벌 진출이나 수익화를 고민하는 B2C 제품','UX 리서처, 또는 리서치를 살릴 수 있는 인접 직무'],a:'LinkedIn으로 연락하기',cv:'이력서 받기',st:'새로운 팀을 찾고 있어요',md:'서울 · 원격 · 하이브리드',lk:'이런 기회를 찾고 있어요',ph:'귀사 이름을 적어주세요',ml:'메일로 연락하기'}:{p:['A team where understanding users changes product and business decisions','B2C products thinking about global growth or monetization','Senior UX research — or an adjacent role where research drives the product'],a:'Message me on LinkedIn',cv:'Get my resume',st:'Open to new roles',md:'Seoul · Remote · Hybrid',lk:'Looking for',ph:"Your company name",ml:'Or email me'};
   return `<div class="pc off" data-k="next"><div class="status"><i></i>${n.st}</div><div class="modes">${n.md}</div><div class="co"><label class="cin${COMPANY?' has':''}"><input id="coIn" autocomplete="organization" spellcheck="false" placeholder="" aria-label="${n.ph}" value="${COMPANY.replace(/"/g,'&quot;')}"></label></div><div class="lk">${n.lk}</div><div class="pts">${n.p.map(x=>`<div>${x}</div>`).join('')}</div><div class="cta3"><a class="p" href="https://www.linkedin.com/in/chan-kang" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>${n.a}<b>↗</b></a><button class="s" id="cvBtn">${n.cv}</button></div><a class="mailx" href="mailto:kamchan.kang@gmail.com">${n.ml} · kamchan.kang@gmail.com</a></div>`}const c=P[k][lang];
- return `<div class="pc off" data-k="${k}"><div class="cat">${c.cat}</div><div class="corow"><div class="co">${c.c}</div><div class="meta2">${c.y}<br>${c.loc}</div></div><p class="lead2">${c.l}</p><div class="pts">${c.p.map(x=>`<div>${x}</div>`).join('')}</div><div class="mx"><span class="n">${c.n}</span><div class="r"><div class="d">${c.d}</div>${c.href?`<a class="go3" href="${c.href}">${c.k} →</a>`:''}</div></div></div>`}).join('');showPanel(curPanel,true)}
+ return `<div class="pc off" data-k="${k}"><div class="cat">${c.cat}</div><div class="corow"><div class="co">${c.c}</div><div class="meta2"><span>${c.y}</span><span>${c.loc}</span></div></div><p class="lead2">${c.l}</p><div class="pts">${c.p.map(x=>`<div>${x}</div>`).join('')}</div><div class="mx"><span class="n">${c.n}</span><div class="r"><div class="d">${c.d}</div>${c.href?`<a class="go3" href="${c.href}">${c.k} →</a>`:''}</div></div></div>`}).join('');showPanel(curPanel,true)}
 let curPanel='id';
 function showPanel(k,force){const ks=order;const ni=ks.indexOf(k);document.querySelectorAll('.pc').forEach(p=>{const i=ks.indexOf(p.dataset.k);p.classList.toggle('off',i>ni);p.classList.toggle('up',i<ni)});curPanel=k}
 
@@ -360,20 +377,29 @@ function render(k){const t=T[k],c=t[lang];applyBg(k);badge.classList.remove('shi
 setInterval(drawQR,500);
 function setLang(l){document.title=l==='ko'?'강감찬 · Senior UX Researcher':'Chan Kang · Senior UX Researcher';try{localStorage.setItem('lang',l)}catch(e){};lang=l;document.body.dataset.lang=l;document.documentElement.lang=l;
  document.querySelectorAll('[data-en]').forEach(e=>e.innerHTML=e.dataset[l]);
- document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));render(cur);buildPanels()}
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));render(cur);buildPanels();fitRig()}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 document.querySelectorAll('.review button').forEach(b=>b.onclick=()=>{if(b.dataset.k){document.body.dataset.kof=b.dataset.k;document.querySelectorAll('.review [data-k]').forEach(x=>x.classList.toggle('on',x===b))}else{document.body.dataset.punct=b.dataset.p;document.querySelectorAll('.review [data-p]').forEach(x=>x.classList.toggle('on',x===b))}});
 
 // ---- lanyard: verlet rope + rigid card hanging from the clip ----
 const wrap=document.getElementById('rigwrap'),sL=document.getElementById('sL'),sR=document.getElementById('sR'),clipG=document.getElementById('clipG'),tip=document.getElementById('tip');
 const TUNE={grav:.0035,damp:.985,maxAng:.7,dragSens:400,kick:.02,up:.16,down:.12,twist:.1,strapW:1};
-let ang=.04,vel=0,drag=false,lastX=0,moved=0,lift=0,liftT=0,pending=null,phi=0;
+let ang=.04,vel=0,drag=false,lastX=0,lastY=0,moved=0,lift=0,liftT=0,pending=null,phi=0;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// phones: shorten the strap and scale the badge so it sits above the copy as large as fits
+const mqM=matchMedia('(max-width:760px)');let RL=null;
+function fitRig(){const st=document.querySelector('.sticky');if(!mqM.matches){RL=null;wrap.style.transform='';wrap.style.height='';st.style.gridTemplateRows='';return}
+ // fixed per width so collapsing browser toolbars don't resize the badge mid-scroll
+ if(fitRig.W!==innerWidth){fitRig.W=innerWidth;fitRig.H=innerHeight}
+ const H=fitRig.H,ph=Math.max(0,...[...document.querySelectorAll('.pc')].map(p=>p.offsetHeight));
+ const row=Math.round(Math.max(.5*(64+36+364)+12,Math.min(.46*H,H-ph-16)));st.style.gridTemplateRows=row+'px 1fr';wrap.style.height=row+'px';
+ const room=row-12,BH=364,TOP=64;let s=.64,l=room/s-TOP-BH;if(l<36){l=36;s=room/(TOP+l+BH)}RL=Math.min(l,250,H*.28);wrap.style.transform=`scale(${s.toFixed(3)})`}
+fitRig();addEventListener('resize',fitRig);
 function swapTo(k){if(k===cur&&!pending)return;if(reduce){cur=k;badge.classList.remove('flipped');render(k);return}pending=k;liftT=1}
 let lastT=performance.now();
 function frame(now){
  const dt=Math.min(1000,(now||performance.now())-lastT);lastT=now||performance.now();const f=dt/16.7,ease=k=>1-Math.pow(1-k,f);
- const L=Math.min(250,innerHeight*.28);
+ const L=RL??Math.min(250,innerHeight*.28);
  if(liftT===1){lift+=(1.05-lift)*ease(TUNE.up);if(lift>1){cur=pending;pending=null;badge.classList.remove('flipped');render(cur);liftT=-1;vel+=TUNE.kick}}
  else if(liftT===-1){lift+=(0-lift)*ease(TUNE.down);if(lift<.003){lift=0;liftT=0;badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine')}}
  if(!drag&&!reduce){const n=Math.min(120,Math.ceil(f)),h=f/n;for(let i=0;i<n;i++){vel+=-TUNE.grav*Math.sin(ang)*h;vel*=Math.pow(TUNE.damp,h);ang+=vel*h}ang=Math.max(-TUNE.maxAng,Math.min(TUNE.maxAng,ang))}
@@ -393,22 +419,29 @@ function frame(now){
 const INK=getComputedStyle(document.body).getPropertyValue('--ink').trim()||'#111';sL.setAttribute('fill',STRAP[cur]||INK);sR.setAttribute('fill',STRAP[cur]||INK);sR.setAttribute('opacity','.82');
 requestAnimationFrame(frame);
 badge.addEventListener('animationend',()=>badge.classList.remove('shine'));
-badge.addEventListener('pointerdown',e=>{drag=true;moved=0;lastX=e.clientX;badge.setPointerCapture(e.pointerId)});
-badge.addEventListener('pointermove',e=>{if(!drag)return;const d=(e.clientX-lastX)/TUNE.dragSens;moved+=Math.abs(e.clientX-lastX);ang=Math.max(-.6,Math.min(.6,ang+d));vel=d*.5;lastX=e.clientX});
-badge.addEventListener('pointerup',()=>{drag=false;if(moved<6){badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
+badge.addEventListener('pointerdown',e=>{drag=true;moved=0;lastX=e.clientX;lastY=e.clientY;badge.setPointerCapture(e.pointerId)});
+badge.addEventListener('pointermove',e=>{if(!drag)return;const d=(e.clientX-lastX)/TUNE.dragSens;moved+=Math.abs(e.clientX-lastX)+Math.abs(e.clientY-lastY);lastY=e.clientY;ang=Math.max(-.6,Math.min(.6,ang+d));vel=d*.5;lastX=e.clientX});
+const endDrag=()=>{drag=false};badge.addEventListener('pointercancel',endDrag);badge.addEventListener('lostpointercapture',endDrag);
+badge.addEventListener('pointerup',()=>{if(!drag)return;drag=false;if(moved<6){badge.classList.toggle('flipped');badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine');tip.textContent=lang==='ko'?'스크롤하면 경력이 이어져요 ↓':'Scroll for career ↓'}});
 // scroll → career
 const stage=document.getElementById('stage'),strip=document.getElementById('strip'),bar=document.getElementById('bar'),ticks=[...document.querySelectorAll('.tick')];
 const rail=[...document.querySelectorAll('.rail button')],rfill=document.getElementById('rfill');
 function segTop(i){const total=stage.offsetHeight-innerHeight,p=i<0?0:.1+.9*((i+.5)/5);return stage.offsetTop+p*total}
 rail.forEach(b=>b.onclick=()=>go(+b.dataset.i));
 let snapT=null,lastIdx=-1;
-let lock=0,acc=0,goal=null;
+let lock=0,acc=0,goal=null,lastWheel=0,used=false;
 function inStage(){const r=stage.getBoundingClientRect();return r.top<=1&&r.bottom>=innerHeight-1}
 function go(i){i=Math.max(-1,Math.min(4,i));goal=i;lock=performance.now()+750;scrollTo({top:segTop(i),behavior:'smooth'})}
 // wheel/trackpad: one gesture = one company
 addEventListener('wheel',e=>{if(!inStage())return;const cur=goal??lastIdx;
  if((cur===4&&e.deltaY>0)||(cur===-1&&e.deltaY<0&&stage.getBoundingClientRect().top>=-2))return;
- e.preventDefault();if(performance.now()<lock){acc=0;return}acc+=e.deltaY;if(Math.abs(acc)>30){go(cur+(acc>0?1:-1));acc=0}},{passive:false});
+ e.preventDefault();const now=performance.now();if(now-lastWheel>220){used=false;acc=0}lastWheel=now;
+ if(used||now<lock){acc=0;return}acc+=e.deltaY;if(Math.abs(acc)>30){go(cur+(acc>0?1:-1));acc=0;used=true}},{passive:false});
+// touch: one swipe = one company (momentum can't carry past the next one)
+let ty0=null,tFrom=-1;
+addEventListener('touchstart',e=>{ty0=null;if(!inStage()||e.touches.length>1||e.target.closest('input,textarea,.cvm'))return;ty0=e.touches[0].clientY;tFrom=goal??lastIdx},{passive:true});
+addEventListener('touchmove',e=>{if(ty0===null)return;const dy=ty0-e.touches[0].clientY;if((tFrom===4&&dy>0)||(tFrom===-1&&dy<0)){ty0=null;return}if(e.cancelable)e.preventDefault()},{passive:false});
+addEventListener('touchend',e=>{if(ty0===null)return;const dy=ty0-e.changedTouches[0].clientY;ty0=null;if(Math.abs(dy)>40&&performance.now()>=lock)go(tFrom+(dy>0?1:-1))},{passive:true});
 addEventListener('keydown',e=>{if(!inStage()||/INPUT|TEXTAREA/.test(e.target.tagName))return;const cur=goal??lastIdx;if(['ArrowDown','PageDown',' '].includes(e.key)&&cur<4){e.preventDefault();go(cur+1)}else if(['ArrowUp','PageUp'].includes(e.key)&&cur>-1){e.preventDefault();go(cur-1)}});
 // touch / scrollbar: settle on the nearest company
 function settle(){if(performance.now()<lock||!inStage())return;let b=-1,d=1e9;for(let i=-1;i<5;i++){const x=Math.abs(scrollY-segTop(i));if(x<d){d=x;b=i}}if(d>4)go(b)}
