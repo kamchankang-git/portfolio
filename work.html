@@ -86,12 +86,12 @@ details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:10px 0;
 .lang{box-sizing:border-box;height:32px;width:116px;align-items:center;font-size:12.5px!important}
 .lang button:last-of-type{font-size:11.5px;letter-spacing:-.02em}.lang button{flex:1;display:inline-flex!important;align-items:center;justify-content:center;height:24px;padding:0!important;line-height:1}
 @media (max-width:760px){.rbtn{height:28px;padding:0 10px!important;font-size:12px!important}.lang{height:28px;width:100px}.lang button{height:20px}}
-</style><link rel="stylesheet" href="site.css">
+</style><link rel="stylesheet" href="site.css?v=2">
 </head>
 <body data-lang="ko">
 <nav><a href="index.html"><span data-l="en">Chan Kang</span><span data-l="ko">강감찬</span></a>
  <span class="links"><a class="on" href="work.html" >Projects</a></span>
- <span class="rt"><a class="rbtn" href="index.html?cv=1">Resume</a><span class="lang"><i></i><button data-s="en">EN</button><button data-s="ko" class="on">한국어</button></span></span></nav>
+ <span class="rt"><a class="rbtn" href="#" role="button">Resume</a><span class="lang"><i></i><button data-s="en">EN</button><button data-s="ko" class="on">한국어</button></span></span></nav>
 
 <main class="wrap">
  <header>
@@ -127,5 +127,5 @@ function setLang(l){try{localStorage.setItem('lang',l)}catch(e){};lang=l;documen
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.s));
 setLang((new URLSearchParams(location.search).get('lang')||(function(){try{return localStorage.getItem('lang')}catch(e){return null}})())||'ko');
 </script>
-<script src="site.js"></script>
+<script src="site.js?v=2"></script>
 </body></html>
