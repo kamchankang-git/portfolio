@@ -235,6 +235,7 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .axes{grid-template-columns:repeat(3,max-content);gap:14px 36px}
 .bgline{font-size:13px;color:var(--muted);margin-top:14px}
 @media (max-width:1180px){.axes{grid-template-columns:repeat(2,max-content)}}
+.axes .al{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
 .badge{touch-action:pan-y}
 .after{height:0}
 .meta2 span{display:block}
@@ -281,7 +282,7 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 <script>
 const KHS={
 a:['사용자 이해를<br><em>제품의 결정으로.</em>','Fortune 500부터 시리즈 A 스타트업까지, 하드웨어와 디지털 제품을 연구해 온 UX 리서처입니다. 미국과 한국, 두 시장의 사용자를 직접 만나 왔습니다.'],
-b:['Fortune 500부터<br><em>시리즈 A 스타트업까지.</em>','사용자 이해로 제품의 방향을 이끌어 온 UX 리서처입니다. 하드웨어, 엔터프라이즈 SaaS, 에듀테크를 미국과 한국에서 연구했습니다.'],
+b:['Fortune 500부터<br><em>시리즈 A 스타트업까지.</em>','사용자 이해로 제품의 방향을 이끌어 온 UX 리서처입니다. 미국과 한국, 두 시장의 사용자를 직접 만나 왔습니다.'],
 c:['제품의 방향을<br><em>사용자 이해로.</em>','Fortune 500부터 시리즈 A 스타트업까지, 하드웨어와 디지털 제품을 연구해 온 UX 리서처입니다. 미국과 한국, 두 시장의 사용자를 직접 만나 왔습니다.'],
 d:['리서치가<br><em>결정이 되도록.</em>','Fortune 500부터 시리즈 A 스타트업까지, 하드웨어와 디지털 제품을 연구해 온 UX 리서처입니다. 미국과 한국, 두 시장의 사용자를 직접 만나 왔습니다.'],
 e:['Big-company rigor.<br><em>Startup speed.</em>','Fortune 500부터 시리즈 A 스타트업까지, 하드웨어와 디지털 제품을 연구해 온 UX 리서처입니다. 미국과 한국, 두 시장의 사용자를 직접 만나 왔습니다.'],
@@ -320,8 +321,8 @@ sendbird:['Developer Platform','Developer Experience','ResearchOps','Conversatio
 sling:['B2C EdTech','Tablet & Mobile','Monetization','Pricing Research','Global Expansion','Product Analytics','AI-assisted Research']};
 const order=['id','bose','akamai','sendbird','sling','next'];
 const P={
- id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><div class="axes"><div><b>8 years</b>UX research in the US and Korea</div><div><b>Consumer Electronics</b><b>Enterprise SaaS</b><b>B2C Tablet &amp; Mobile EdTech</b></div><div><b>English · Korean</b>native in both</div></div><p class="bgline">Background in Human Factors Engineering (Tufts)</p>`,
-     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><div class="axes"><div><b>9년차</b>미국과 한국에서 UX 리서치</div><div><b>소비자 전자기기</b><b>엔터프라이즈 SaaS</b><b>B2C 태블릿·모바일 에듀테크</b></div><div><b>영어 · 한국어</b>둘 다 모국어 수준</div></div><p class="bgline">인간공학 전공 (Tufts)</p>`},
+ id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><div class="axes"><div><span class="al">Research areas</span><b>Consumer electronics · Enterprise SaaS · B2C EdTech</b></div><div><span class="al">Working languages</span><b>English · Korean</b></div><div><span class="al">Degree</span><b>Human Factors Eng. · Tufts</b></div></div>`,
+     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><div class="axes"><div><span class="al">연구 영역</span><b>소비자 전자기기 · 엔터프라이즈 SaaS · B2C 에듀테크</b></div><div><span class="al">업무 언어</span><b>영어 · 한국어</b></div><div><span class="al">전공</span><b>인간공학 · Tufts</b></div></div>`},
  bose:{en:{cat:'Hardware',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Shaped the gesture experience of Bose’s first touch-control headphones.',p:['Designed the gesture-testing protocol for the NCH 700 — a counterbalanced study with 23 participants','Built the experiment setup that became the template for later touch-tuning studies','Flagged comprehension issues in a voice-prompt change, which led to the update being pulled'],n:'94%',d:'gesture accuracy of the chosen configuration',k:'Read the case',href:'work_case_bose.html'},
        ko:{cat:'하드웨어',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Bose의 첫 터치 컨트롤 헤드폰의 제스처 경험을 다듬었습니다.',p:['Bose 첫 터치 컨트롤 헤드폰(NCH 700)의 제스처 테스트 프로토콜 설계','이후 터치 튜닝 연구의 표준 템플릿이 된 실험 체계 구축','노이즈 캔슬링 음성 안내 변경안의 이해도 문제를 발견해 도입 중단으로 연결'],n:'94%',d:'선택된 구성의 제스처 정확도',k:'케이스 보기',href:'work_case_bose.html'}},
  akamai:{en:{cat:'Enterprise SaaS',y:'2019–2021',loc:'Cambridge, MA',c:'Akamai',l:'Helped enterprise users find what was worth paying for.',p:['Mixed-methods research on the freemium-to-paid journey','Surfaced key navigation issues in a product used by 1,000+ client companies','Trained UX designers in usability-testing methods'],n:'+30%',d:'organic discovery of paid features',k:'Research index'},
