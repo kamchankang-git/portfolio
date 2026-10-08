@@ -119,9 +119,7 @@ const G=[];
 const ML={qual:{ko:'정성',en:'Qual'},quant:{ko:'정량',en:'Quant'},mixed:{ko:'혼합',en:'Mixed'},ops:{ko:'운영',en:'Ops'}};
 let lang='ko',flt='all';
 function row(x){const [en,ko,m,f]=x;return `<div class="row" data-m="${m}"><span>${lang==='ko'?ko:en}${f?`<span class="f">${lang==='ko'?'케이스':'Case'} 0${f}</span>`:''}</span><em>${ML[m][lang]}</em></div>`}
-function draw(){let n=0;(document.getElementById('groups')||{}).innerHTML=G.map(g=>{const co=typeof g.co==='string'?g.co:g.co[lang];n+=g.r.length+(g.hidden||[]).length;
- return `<div class="grp"><div class="co"><b>${co}</b><span>${g.y}${g.y&&g.d[lang]?'<br>':''}${g.d[lang]}</span></div><div class="rows">${g.r.map(row).join('')}${g.hidden?`<details><summary>${lang==='ko'?'더 보기':'More'}</summary>${g.hidden.map(row).join('')}</details>`:''}</div></div>`}).join('');
- document.getElementById('cnt').textContent=n+(lang==='ko'?'개 프로젝트':' projects');applyF()}
+function draw(){}
 function applyF(){document.querySelectorAll('.row').forEach(r=>r.classList.toggle('hide',flt!=='all'&&r.dataset.m!==flt));document.querySelectorAll('.filters button').forEach(b=>b.classList.toggle('on',b.dataset.f===flt))}
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{flt=b.dataset.f;applyF()});
 function setLang(l){try{localStorage.setItem('lang',l)}catch(e){};lang=l;document.body.dataset.lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.s===l));draw()}
