@@ -236,6 +236,15 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .bgline{font-size:13px;color:var(--muted);margin-top:14px}
 @media (max-width:1180px){.axes{grid-template-columns:repeat(2,max-content)}}
 nav .brand{color:inherit;text-decoration:none}
+.mhint{display:none}
+@media (max-width:760px){
+ .mhint{display:block;font-size:12.5px;color:var(--muted);margin-top:14px}
+ .rail{display:flex!important;right:4px;gap:10px;padding:6px 0}
+ .rail em{display:none}
+ .rail b{width:8px;height:8px;border-width:1.5px}
+ .rail .rtrack{right:3px;top:10px;bottom:10px}
+ .rail button{height:12px}
+}
 .axes .al{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
 .badge{touch-action:pan-y}
 .after{height:0}
@@ -322,8 +331,8 @@ sendbird:['Developer Platform','Developer Experience','ResearchOps','Conversatio
 sling:['B2C EdTech','Tablet & Mobile','Monetization','Pricing Research','Global Expansion','Product Analytics','AI-assisted Research']};
 const order=['id','bose','akamai','sendbird','sling','next'];
 const P={
- id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><div class="axes"><div><span class="al">Research areas</span><b>Consumer electronics · Enterprise SaaS · B2C EdTech</b></div><div><span class="al">Working languages</span><b>English · Korean</b></div><div><span class="al">Degree</span><b>Human Factors Eng. · Tufts</b></div></div>`,
-     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><div class="axes"><div><span class="al">연구 영역</span><b>소비자 전자기기 · 엔터프라이즈 SaaS · B2C 에듀테크</b></div><div><span class="al">업무 언어</span><b>영어 · 한국어</b></div><div><span class="al">전공</span><b>인간공학 · Tufts</b></div></div>`},
+ id:{en:`<h1>Big-company rigor.<br><em>Startup speed.</em></h1><p class="sub">Trained where research was mature, proven where it was new — a senior UX researcher across hardware, enterprise SaaS and a Series A startup, in the US and Korea.</p><p class="mhint">Tap to flip · scroll for career ↓</p><div class="axes"><div><span class="al">Research areas</span><b>Consumer electronics · Enterprise SaaS · B2C EdTech</b></div><div><span class="al">Working languages</span><b>English · Korean</b></div><div><span class="al">Degree</span><b>Human Factors Eng. · Tufts</b></div></div>`,
+     ko:`<h1>${KH[0]}</h1><p class="sub">${KH[1]}</p><p class="mhint">탭하면 뒤집혀요 · 스크롤하면 경력이 이어져요 ↓</p><div class="axes"><div><span class="al">연구 영역</span><b>소비자 전자기기 · 엔터프라이즈 SaaS · B2C 에듀테크</b></div><div><span class="al">업무 언어</span><b>영어 · 한국어</b></div><div><span class="al">전공</span><b>인간공학 · Tufts</b></div></div>`},
  bose:{en:{cat:'Hardware',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Shaped the gesture experience of Bose’s first touch-control headphones.',p:['Designed the gesture-testing protocol for the NCH 700 — a counterbalanced study with 23 participants','Built the experiment setup that became the template for later touch-tuning studies','Flagged comprehension issues in a voice-prompt change, which led to the update being pulled'],n:'94%',d:'gesture accuracy of the chosen configuration',k:'Read the case',href:'work_case_bose.html'},
        ko:{cat:'하드웨어',y:'2018–2019',loc:'Framingham, MA',c:'Bose',l:'Bose의 첫 터치 컨트롤 헤드폰의 제스처 경험을 다듬었습니다.',p:['Bose 첫 터치 컨트롤 헤드폰(NCH 700)의 제스처 테스트 프로토콜 설계','이후 터치 튜닝 연구의 표준 템플릿이 된 실험 체계 구축','노이즈 캔슬링 음성 안내 변경안의 이해도 문제를 발견해 도입 중단으로 연결'],n:'94%',d:'선택된 구성의 제스처 정확도',k:'케이스 보기',href:'work_case_bose.html'}},
  akamai:{en:{cat:'Enterprise SaaS',y:'2019–2021',loc:'Cambridge, MA',c:'Akamai',l:'Helped enterprise users find what was worth paying for.',p:['Mixed-methods research on the freemium-to-paid journey','Surfaced key navigation issues in a product used by 1,000+ client companies','Trained UX designers in usability-testing methods'],n:'+30%',d:'organic discovery of paid features',k:'Research index'},
@@ -368,7 +377,7 @@ const TYPE={ko:['회사 이름을 적어 보세요','어느 회사에서 오셨�
 
 function NEXTBACK(){const ko=lang==='ko';return `<div class="tease"><div class="t1">${ko?'뒤집어 보셨네요 👀':'You flipped it 👀'}</div><p>${ko?'이런 호기심이 있는 팀이라면, 만드는 제품도 궁금해지네요.':'Curiosity like this usually leads to something worth hearing about.'}</p><p class="t2">${ko?'서로 궁금한 것, 커피 한 잔 하며 나눠 볼까요?':'Let’s trade questions over coffee.'}</p><div class="qrrow"><div class="qrbox" id="qrNext"></div><a class="say" href="https://www.linkedin.com/in/chan-kang" target="_blank" rel="noopener">${ko?'LinkedIn으로 인사 나누기':'Say hi on LinkedIn'} <b>→</b></a></div></div>`}
 function drawQR(){const el=document.getElementById('qrNext');if(!el||el.dataset.done||!window.QRCode)return;el.dataset.done=1;new QRCode(el,{text:'https://www.linkedin.com/in/chan-kang',width:76,height:76,colorDark:'#1a1f3d',colorLight:'rgba(255,255,255,0)',correctLevel:QRCode.CorrectLevel.M})}
-function render(k){const t=T[k],c=t[lang];applyBg(k);badge.classList.remove('shine');try{const sc=(BGM==='2'||BGM==='3')?'#111214':(STRAP[k]||'#111');sL.setAttribute('fill',sc);sR.setAttribute('fill',sc)}catch(_){}
+function render(k){const t=T[k],c=t[lang];if(typeof applyLay==='function')try{applyLay(k)}catch(_){}applyBg(k);badge.classList.remove('shine');try{const sc=(BGM==='2'||BGM==='3')?'#111214':(STRAP[k]||'#111');sL.setAttribute('fill',sc);sR.setAttribute('fill',sc)}catch(_){}
  const side=`<div class="side" style="background:${t.sideBg};color:${t.sideFg}"><span>${t.side}</span></div>`;
  const fr=FRONT[k]||{};const L2=lang==='ko'?{y:'재직',l:'근무지'}:{y:'Years',l:'Location'};
  const front= k==='id' ? `<div class="face"><div class="idc" style="grid-column:1/3"><div class="ph"><img src="assets/photo_badge.webp" alt="${c.nm}" draggable="false"></div><div class="acc"></div><div class="bd"><div class="k2">${c.kind}</div><div class="n2">${c.nm}</div><div class="r2">${c.rl}</div><div class="f2"><span>English · 한국어</span></div></div></div><div class="slot"></div></div>`
@@ -391,12 +400,19 @@ let ang=.04,vel=0,drag=false,lastX=0,lastY=0,moved=0,lift=0,liftT=0,pending=null
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // phones: shorten the strap and scale the badge so it sits above the copy as large as fits
 const mqM=matchMedia('(max-width:760px)');let RL=null;
-function fitRig(){const st=document.querySelector('.sticky');if(!mqM.matches){RL=null;wrap.style.transform='';wrap.style.height='';st.style.gridTemplateRows='';return}
+function fitRig(){const st=document.querySelector('.sticky'),pcs=[...document.querySelectorAll('.pc')],rl=document.querySelector('.rail');if(!mqM.matches){RL=null;wrap.style.transform='';wrap.style.height='';st.style.gridTemplateRows='';pcs.forEach(p=>p.style.top='');if(rl)rl.style.top='';return}
  // fixed per width so collapsing browser toolbars don't resize the badge mid-scroll
  if(fitRig.W!==innerWidth){fitRig.W=innerWidth;fitRig.H=innerHeight}
- const H=fitRig.H,ph=Math.max(0,...[...document.querySelectorAll('.pc')].map(p=>p.offsetHeight));
- const row=Math.round(Math.max(.5*(64+36+364)+12,Math.min(.46*H,H-ph-16)));st.style.gridTemplateRows=row+'px 1fr';wrap.style.height=row+'px';
- const room=row-12,BH=364,TOP=64;let s=.64,l=room/s-TOP-BH;if(l<36){l=36;s=room/(TOP+l+BH)}RL=Math.min(l,250,H*.28);wrap.style.transform=`scale(${s.toFixed(3)})`}
+ const H=fitRig.H,nh=document.querySelector('nav').offsetHeight,ph=Math.max(0,...pcs.map(p=>p.offsetHeight));
+ // row 1 holds the badge (strap tucked under the nav), row 2 the copy; the tallest panel must fit
+ const row=Math.round(Math.max(nh+200,Math.min(.56*H,H-ph-16)));st.style.gridTemplateRows=row+'px 1fr';wrap.style.height=row+'px';
+ // each panel gets the largest badge its own copy allows; the badge resizes while it's lifted off-screen between panels
+ const BH=364,TOP=64,top=nh+8;
+ pcs.forEach(p=>{const r=Math.round(Math.max(row,Math.min(.56*H,H-p.offsetHeight-16))),sp=r-14-top,s=Math.min(.7,sp/BH),ex=sp-s*BH;
+  LAY[p.dataset.k]={s,RL:Math.max(0,(top+ex*.5)/s-TOP)};p.style.top=Math.round((r-row)+Math.max(0,(H-r-p.offsetHeight-12)*.4))+'px'});
+ if(rl)rl.style.top=((top+row-14)/2)+'px';applyLay(cur)}
+const LAY={};
+function applyLay(k){const L=LAY[k];if(!L||!mqM.matches)return;RL=L.RL;wrap.style.transform=`scale(${L.s.toFixed(3)})`}
 fitRig();addEventListener('resize',fitRig);
 function swapTo(k){if(k===cur&&!pending)return;if(reduce){cur=k;badge.classList.remove('flipped');render(k);return}pending=k;liftT=1}
 let lastT=performance.now();
