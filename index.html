@@ -240,7 +240,8 @@ body[data-lang="ko"] .nextc .pass span{letter-spacing:0;font-family:inherit;font
 .mx{align-items:stretch}
 .mx .r{display:flex;flex-direction:column;justify-content:space-between;padding:4px 0 2px}
 .mx .go3{margin-top:0;align-self:flex-start}
-</style></head>
+</style><link rel="stylesheet" href="site.css">
+</head>
 <body data-theme="1" data-lang="en" data-enf="instrument" data-kof="noto" data-punct="inst">
 <nav><span data-en="Chan Kang" data-ko="강감찬">Chan Kang</span>
  <span class="links"><a href="work.html">Projects</a></span>
@@ -430,4 +431,5 @@ if(qs.get('k')){removeEventListener('scroll',onScroll);cur=qs.get('k');pending=n
  showPanel(cur);const i=order.indexOf(cur)-1;ticks.forEach((t,j)=>t.classList.toggle('on',j===i));if(i>=0){bar.style.width=((i+.5)/5*100)+'%'};rail.forEach(b=>b.classList.toggle('on',+b.dataset.i===i));rfill.style.height=((i+1)/5*100)+'%'}if(qs.get('kof'))document.querySelector(`.review button[data-k="${qs.get('kof')}"]`).click();if(qs.get('lang'))setLang(qs.get('lang'));
 </script>
 <div id="cvModal" class="cvm" hidden></div>
+<script src="site.js"></script>
 </body></html>
