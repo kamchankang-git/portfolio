@@ -23,3 +23,18 @@
 .links a::after,.mailx::after,.go3::after,nav>a:first-child::after{content:'';position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
 .lang button::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 .rail button::after{content:'';position:absolute;left:-10px;right:-10px;top:50%;height:32px;transform:translateY(-50%)}
+
+/* Nav controls: one step larger */
+nav{font-size:15px}
+nav .links{font-size:15px}
+nav .rbtn{height:36px!important;padding:0 16px!important;font-size:14px!important}
+nav .lang{height:36px!important;width:128px!important;font-size:13.5px!important}
+nav .lang button{height:28px!important}
+nav .lang button:last-of-type{font-size:13px!important}
+@media (max-width:760px){
+ nav{font-size:14px}nav .links{font-size:14px}
+ nav .rbtn{height:32px!important;padding:0 12px!important;font-size:13px!important}
+ nav .lang{height:32px!important;width:104px!important;font-size:12.5px!important}
+ nav .lang button{height:26px!important}
+ nav .lang button:last-of-type{font-size:12px!important}
+}
