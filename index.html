@@ -268,7 +268,7 @@ nav .brand{color:inherit;text-decoration:none}
 .mx{align-items:stretch}
 .mx .r{display:flex;flex-direction:column;justify-content:space-between;padding:4px 0 2px}
 .mx .go3{margin-top:0;align-self:flex-start}
-</style><link rel="stylesheet" href="site.css?v=4">
+</style><link rel="stylesheet" href="site.css?v=5">
 </head>
 <body data-theme="1" data-lang="en" data-enf="instrument" data-kof="noto" data-punct="inst">
 <nav><a class="brand" href="index.html" data-en="Chan Kang" data-ko="강감찬">Chan Kang</a>
@@ -381,7 +381,7 @@ const TYPE={ko:['회사 이름을 적어 보세요','어느 회사에서 오셨�
 
 function NEXTBACK(){const ko=lang==='ko';return `<div class="tease"><div class="t1">${ko?'뒤집어 보셨네요 👀':'You flipped it 👀'}</div><p>${ko?'이런 호기심이 있는 팀이라면, 만드는 제품도 궁금해지네요.':'Curiosity like this usually leads to something worth hearing about.'}</p><p class="t2">${ko?'서로 궁금한 것, 커피 한 잔 하며 나눠 볼까요?':'Let’s trade questions over coffee.'}</p><div class="qrrow"><div class="qrbox" id="qrNext"></div><a class="say" href="https://www.linkedin.com/in/chan-kang" target="_blank" rel="noopener">${ko?'LinkedIn으로 인사 나누기':'Say hi on LinkedIn'} <b>→</b></a></div></div>`}
 function drawQR(){const el=document.getElementById('qrNext');if(!el||el.dataset.done||!window.QRCode)return;el.dataset.done=1;new QRCode(el,{text:'https://www.linkedin.com/in/chan-kang',width:76,height:76,colorDark:'#1a1f3d',colorLight:'rgba(255,255,255,0)',correctLevel:QRCode.CorrectLevel.M})}
-function render(k){const t=T[k],c=t[lang];if(typeof applyLay==='function')try{applyLay(k)}catch(_){}applyBg(k);badge.classList.remove('shine');try{const sc=(BGM==='2'||BGM==='3')?'#111214':(STRAP[k]||'#111');sL.setAttribute('fill',sc);sR.setAttribute('fill',sc)}catch(_){}
+function render(k){const t=T[k];if(!t)return;const c=t[lang];if(typeof applyLay==='function')try{applyLay(k)}catch(_){}applyBg(k);badge.classList.remove('shine');try{const sc=(BGM==='2'||BGM==='3')?'#111214':(STRAP[k]||'#111');sL.setAttribute('fill',sc);sR.setAttribute('fill',sc)}catch(_){}
  const side=`<div class="side" style="background:${t.sideBg};color:${t.sideFg}"><span>${t.side}</span></div>`;
  const fr=FRONT[k]||{};const L2=lang==='ko'?{y:'재직',l:'근무지'}:{y:'Years',l:'Location'};
  const front= k==='id' ? `<div class="face"><div class="idc" style="grid-column:1/3"><div class="ph"><img src="assets/photo_badge.webp" alt="${c.nm}" draggable="false"></div><div class="acc"></div><div class="bd"><div class="k2">${c.kind}</div><div class="n2">${c.nm}</div><div class="r2">${c.rl}</div><div class="f2"><span>English · 한국어</span></div></div></div><div class="slot"></div></div>`
@@ -426,7 +426,7 @@ let lastT=performance.now();
 function frame(now){
  const dt=Math.min(1000,(now||performance.now())-lastT);lastT=now||performance.now();const f=dt/16.7,ease=k=>1-Math.pow(1-k,f);
  const L=RL??Math.min(250,innerHeight*.28);
- if(liftT===1){lift+=(1.05-lift)*ease(TUNE.up);if(lift>1){cur=pending;pending=null;badge.classList.remove('flipped');render(cur);liftT=-1;vel+=TUNE.kick}}
+ if(liftT===1){lift+=(1.05-lift)*ease(TUNE.up);if(lift>1){if(pending&&T[pending]){cur=pending;badge.classList.remove('flipped');render(cur)}pending=null;liftT=-1;vel+=TUNE.kick}}
  else if(liftT===-1){lift+=(0-lift)*ease(TUNE.down);if(lift<.003){lift=0;liftT=0;badge.classList.remove('shine');void badge.offsetWidth;badge.classList.add('shine')}}
  if(!drag&&!reduce){const n=Math.min(120,Math.ceil(f)),h=f/n;for(let i=0;i<n;i++){vel+=-TUNE.grav*Math.sin(ang)*h;vel*=Math.pow(TUNE.damp,h);ang+=vel*h}ang=Math.max(-TUNE.maxAng,Math.min(TUNE.maxAng,ang))}
  const W=wrap.clientWidth,cx=W/2,len=L*(1-lift)+-420*lift;
@@ -487,5 +487,5 @@ const qs=new URLSearchParams(location.search);
 if(qs.get('k')){removeEventListener('scroll',onScroll);cur=qs.get('k');pending=null;liftT=0;lift=0;render(cur);if(qs.get('flip'))badge.classList.add('flipped');tip.style.display='none';
  showPanel(cur);const i=order.indexOf(cur)-1;ticks.forEach((t,j)=>t.classList.toggle('on',j===i));if(i>=0){bar.style.width=((i+.5)/5*100)+'%'};rail.forEach(b=>b.classList.toggle('on',+b.dataset.i===i));rfill.style.height=((i+1)/5*100)+'%'}if(qs.get('kof'))document.querySelector(`.review button[data-k="${qs.get('kof')}"]`).click();if(qs.get('lang'))setLang(qs.get('lang'));
 </script>
-<script src="site.js?v=4"></script>
+<script src="site.js?v=5"></script>
 </body></html>
