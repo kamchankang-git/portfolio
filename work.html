@@ -93,6 +93,29 @@ details summary{cursor:pointer;font-size:13px;color:var(--muted);padding:10px 0;
 .lang{box-sizing:border-box;height:32px;width:116px;align-items:center;font-size:12.5px!important}
 .lang button:last-of-type{font-size:11.5px;letter-spacing:-.02em}.lang button{flex:1;display:inline-flex!important;align-items:center;justify-content:center;height:24px;padding:0!important;line-height:1}
 @media (max-width:760px){.rbtn{height:28px;padding:0 10px!important;font-size:12px!important}.lang{height:28px;width:100px}.lang button{height:20px}}
+/* motion: entrance, scroll reveal, hover lift (matches the landing's easing; off for reduced motion) */
+@keyframes rise{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+header h1{animation:rise .7s var(--ease-out) both}
+.sh{animation:rise .7s var(--ease-out) .12s both}
+html.rv .flist a{opacity:0;translate:0 22px;transition:opacity .6s var(--ease-out),translate .7s var(--ease-out),transform 160ms var(--ease-out)}
+html.rv .flist a.in{opacity:1;translate:0 0}
+.flist a:active{transform:scale(.985)}
+.cv>img,.cv>.poster,.cv>.card3{transition:translate .45s var(--ease-out),rotate .45s var(--ease-out)}
+.cv:after{transition:transform .45s var(--ease-out),opacity .45s var(--ease-out)}
+.th{transition:box-shadow .35s var(--ease-out)}
+@media (hover:hover){
+ .flist a[href]:hover .cv>img,.flist a[href]:hover .cv>.poster,.flist a[href]:hover .cv>.card3{translate:0 -6px}
+ .flist a[href]:hover .cv>.poster{rotate:-2deg}.flist a[href]:hover .cv>.card3{rotate:2deg}
+ .flist a[href]:hover .cv:after{transform:scaleX(.82);opacity:.65}
+ .flist a[href]:hover .th{box-shadow:0 14px 28px -18px rgba(17,18,20,.35)}
+ .flist h3{transition:color .2s ease}
+}
+@media (prefers-reduced-motion:reduce){
+ header h1,.sh{animation:none}
+ html.rv .flist a{opacity:1;translate:none;transition:none}
+ .cv>img,.cv>.poster,.cv>.card3,.cv:after,.th,.flist a{transition:none}
+ .flist a[href]:hover .cv>img,.flist a[href]:hover .cv>.poster,.flist a[href]:hover .cv>.card3{translate:none;rotate:none}
+}
 </style><link rel="stylesheet" href="site.css?v=6">
 </head>
 <body data-lang="ko">
@@ -133,6 +156,11 @@ document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{flt=b.dat
 function setLang(l){try{localStorage.setItem('lang',l)}catch(e){};lang=l;document.body.dataset.lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.s===l));draw()}
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.s));
 setLang((new URLSearchParams(location.search).get('lang')||(function(){try{return localStorage.getItem('lang')}catch(e){return null}})())||'ko');
+// reveal project rows as they scroll into view (content stays visible without JS or with reduced motion)
+(function(){const rows=[...document.querySelectorAll('.flist a')];if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ document.documentElement.classList.add('rv');let n=0;
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.style.transitionDelay=(n++%4)*70+'ms';el.classList.add('in');setTimeout(()=>el.style.transitionDelay='',900);io.unobserve(el)});setTimeout(()=>n=0,200)},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+ requestAnimationFrame(()=>requestAnimationFrame(()=>rows.forEach(r=>io.observe(r))))})();
 </script>
 <script src="site.js?v=6"></script>
 </body></html>
