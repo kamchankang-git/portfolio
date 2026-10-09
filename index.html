@@ -417,11 +417,12 @@ function fitRig(){const st=document.querySelector('.sticky'),pcs=[...document.qu
  pcs.forEach(p=>{const k=p.dataset.k,ph=p.offsetHeight,lab=k==='id'?30:16,avail=H-nh-10;
   const sc=Math.max(.45,Math.min(.72,(avail-ph-lab-14)/BH)),used=sc*BH+lab+ph,free=Math.max(0,avail-used-14);
   const bt=nh+14+free*.5,ct=bt+sc*BH+lab;LAY[k]={s:sc,RL:Math.max(0,bt/sc-TOP),bt,bb:bt+sc*BH};p.style.top=Math.round(ct-row)+'px'});
+ // dots stay at one fixed height on phones: centred in the band every panel's badge covers
+ {const v=Object.values(LAY),t=Math.max(...v.map(x=>x.bt)),bb=Math.min(...v.map(x=>x.bb));if(rl)rl.style.top=((t+bb)/2)+'px'}
  if(mtap)mtap.style.display='';applyLay(cur)}
 const LAY={};
 const mtap=(()=>{const e=document.createElement('div');e.className='mtap';e.setAttribute('aria-hidden','true');document.querySelector('.sticky').appendChild(e);return e})();
 function applyLay(k){const L=LAY[k];if(!L||!mqM.matches)return;RL=L.RL;wrap.style.transform=`scale(${L.s.toFixed(3)})`;
- const rl=document.querySelector('.rail');if(rl)rl.style.top=((L.bt+L.bb)/2)+'px';
  mtap.textContent=lang==='ko'?'탭하면 뒤집혀요':'Tap to flip';mtap.style.top=(L.bb+8)+'px';mtap.style.opacity=(k==='id'&&!mtap.dataset.done)?1:0}
 fitRig();addEventListener('resize',fitRig);
 function swapTo(k){if(k===cur&&!pending)return;if(reduce){cur=k;badge.classList.remove('flipped');render(k);return}pending=k;liftT=1}
