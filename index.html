@@ -459,7 +459,7 @@ const rail=[...document.querySelectorAll('.rail button')],rfill=document.getElem
 function segTop(i){const total=stage.offsetHeight-innerHeight,p=i<0?0:.1+.9*((i+.5)/5);return stage.offsetTop+p*total}
 rail.forEach(b=>b.onclick=()=>go(+b.dataset.i));
 let snapT=null,lastIdx=-1;
-let lock=0,acc=0,goal=null,lastWheel=0,used=false,lastDir=0,trough=0;
+let lock=0,acc=0,goal=null,lastWheel=0,used=false,lastDir=0,trough=0,rise=0;
 function inStage(){const r=stage.getBoundingClientRect();return r.top<=1&&r.bottom>=innerHeight-1}
 function go(i){i=Math.max(-1,Math.min(4,i));goal=i;lock=performance.now()+750;scrollTo({top:segTop(i),behavior:'smooth'})}
 // wheel/trackpad: one gesture = one company
@@ -467,7 +467,7 @@ addEventListener('wheel',e=>{if(!inStage())return;const cur=goal??lastIdx;
  if((cur===4&&e.deltaY>0)||(cur===-1&&e.deltaY<0&&stage.getBoundingClientRect().top>=-2))return;
  e.preventDefault();const now=performance.now(),a=Math.abs(e.deltaY),dir=Math.sign(e.deltaY);
  // new gesture: a pause, a direction change, or (after the move settles) a surge above the fading inertia
- if(now-lastWheel>220||(dir&&dir!==lastDir)||(used&&now>lock&&a>trough*2+8)){used=false;acc=0}if(dir)lastDir=dir;lastWheel=now;if(used)trough=Math.min(trough,a);
+ rise=(used&&now>lock&&a>Math.max(trough*2+8,18))?rise+1:0;if(now-lastWheel>220||(dir&&dir!==lastDir)||rise>=2){used=false;acc=0;rise=0}if(dir)lastDir=dir;lastWheel=now;if(used&&a>0)trough=Math.min(trough,a);
  if(used||now<lock){acc=0;return}acc+=e.deltaY;if(Math.abs(acc)>30){go(cur+(acc>0?1:-1));acc=0;used=true;trough=a}},{passive:false});
 // touch: one swipe = one company (momentum can't carry past the next one)
 let ty0=null,tFrom=-1;
