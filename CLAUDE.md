@@ -1,3 +1,5 @@
+Session setup: before any work, clone kamchankang-git/claude into ~/claude-config (outside this repo, never into it), read its CLAUDE.md and memory/MEMORY.md, and copy its .claude/skills/ to ~/.claude/skills/.
+
 # Portfolio site — working notes for Claude
 
 Live at https://kamchankang-git.github.io/portfolio/ (GitHub Pages, `main` / root). Static HTML, no build step in this repo.
