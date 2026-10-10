@@ -116,7 +116,7 @@ html.rv .flist a.in{opacity:1;translate:0 0}
  .cv>img,.cv>.poster,.cv>.card3,.cv:after,.th,.flist a{transition:none}
  .flist a[href]:hover .cv>img,.flist a[href]:hover .cv>.poster,.flist a[href]:hover .cv>.card3{translate:none;rotate:none}
 }
-</style><link rel="stylesheet" href="site.css?v=6">
+</style><link rel="stylesheet" href="site.css?v=7">
 </head>
 <body data-lang="ko">
 <nav><a href="index.html"><span data-l="en">Chan Kang</span><span data-l="ko">강감찬</span></a>
@@ -162,5 +162,5 @@ setLang((new URLSearchParams(location.search).get('lang')||(function(){try{retur
  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.style.transitionDelay=(n++%4)*70+'ms';el.classList.add('in');setTimeout(()=>el.style.transitionDelay='',900);io.unobserve(el)});setTimeout(()=>n=0,200)},{rootMargin:'0px 0px -8% 0px',threshold:.12});
  requestAnimationFrame(()=>requestAnimationFrame(()=>rows.forEach(r=>io.observe(r))))})();
 </script>
-<script src="site.js?v=6"></script>
+<script src="site.js?v=7"></script>
 </body></html>

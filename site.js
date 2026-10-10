@@ -36,3 +36,6 @@ if(new URLSearchParams(location.search).get('cv')==='1'){if(document.readyState=
 
 // Favicon on every page, including unlocked case pages
 (function(){if(document.querySelector('link[rel~="icon"]'))return;var l=document.createElement('link');l.rel='icon';l.type='image/svg+xml';l.href='favicon.svg';document.head.appendChild(l)})();
+
+// Nav hierarchy: the resume link sits with Projects as a plain text link (all pages, incl. case pages)
+(function(){var r=document.querySelector('nav .rbtn'),l=document.querySelector('nav .links');if(r&&l&&r.parentNode!==l)l.appendChild(r)})();
