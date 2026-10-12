@@ -57,3 +57,6 @@ html body nav .links .rbtn:active{transform:none}
 /* Same nav on every page: Instrument Sans for Latin, IBM Plex Sans KR for Korean; same height on phones */
 html body nav,html body nav a,html body nav button{font-family:'Instrument Sans','IBM Plex Sans KR',sans-serif!important}
 @media (max-width:760px){html body nav{padding:12px 16px!important}}
+
+/* US market-entry case is hidden for now: drop links to it from other pages (remove this rule to restore) */
+a[href*="work_case_us"],.next:has(> a[href*="work_case_us"]){display:none!important}
