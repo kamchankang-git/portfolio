@@ -39,3 +39,11 @@ if(new URLSearchParams(location.search).get('cv')==='1'){if(document.readyState=
 
 // Nav hierarchy: the resume link sits with Projects as a plain text link (all pages, incl. case pages)
 (function(){var r=document.querySelector('nav .rbtn'),l=document.querySelector('nav .links');if(r&&l&&r.parentNode!==l)l.appendChild(r)})();
+
+// TEMPORARY: case pages open without the password prompt (StatiCrypt auto-unlock via the hashed password in the link).
+// To require the password again, set CASE_UNLOCK to '' (and consider re-encrypting with a new password).
+(function(){var CASE_UNLOCK='aaace52c936b6a444218fc74e47760b556b3eef6dd0bf6faef09b47c49206797';
+ if(location.hash.indexOf('staticrypt_pwd=')>-1&&history.replaceState)history.replaceState(null,'',location.pathname+location.search);
+ if(!CASE_UNLOCK)return;
+ document.querySelectorAll('a[href*="work_case_"]').forEach(function(a){var h=a.getAttribute('href');if(h.indexOf('#')<0)a.setAttribute('href',h+'#staticrypt_pwd='+CASE_UNLOCK)});
+})();
